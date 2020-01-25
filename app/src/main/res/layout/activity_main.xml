@@ -1,0 +1,483 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:n1="http://schemas.android.com/apk/res/android"
+    n1:id="@+id/drawer_layout"
+    n1:layout_width="fill_parent"
+    n1:layout_height="fill_parent">
+
+    <RelativeLayout
+        n1:id="@+id/mainLayout"
+        n1:layout_width="match_parent"
+        n1:layout_height="match_parent">
+
+        <LinearLayout
+            n1:layout_width="fill_parent"
+            n1:layout_height="fill_parent"
+            n1:background="#ffffff"
+            n1:orientation="vertical">
+
+            <RelativeLayout
+                n1:id="@+id/container_toolbar"
+                n1:layout_width="fill_parent"
+                n1:layout_height="wrap_content"
+                n1:orientation="vertical">
+
+                <include
+                    n1:id="@+id/toolbar"
+                    layout="@layout/toolbar" />
+            </RelativeLayout>
+
+
+            <androidx.cardview.widget.CardView
+                n1:layout_width="match_parent"
+                n1:layout_height="wrap_content"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="5dp"
+                app:cardUseCompatPadding="true">
+
+                <LinearLayout
+                    n1:id="@+id/banner_container"
+                    n1:layout_width="match_parent"
+                    n1:layout_height="wrap_content"
+                    n1:background="@drawable/bg_banner"
+                    n1:orientation="vertical" />
+            </androidx.cardview.widget.CardView>
+
+
+            <LinearLayout
+                n1:layout_width="fill_parent"
+                n1:layout_height="wrap_content"
+                n1:layout_weight="1.0"
+                n1:background="#ffffff"
+                n1:orientation="vertical">
+
+                <LinearLayout
+                    n1:id="@+id/top_holder"
+                    n1:layout_width="fill_parent"
+                    n1:layout_height="0.0dip"
+                    n1:layout_weight="1.0"
+                    n1:orientation="horizontal">
+
+                    <androidx.cardview.widget.CardView
+                        n1:id="@+id/layout_college"
+                        n1:layout_width="0.0dip"
+                        n1:layout_height="fill_parent"
+
+                        n1:layout_weight="1.0"
+                        n1:clickable="true"
+                        n1:gravity="center"
+                        n1:orientation="vertical"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="5dp"
+                        app:cardUseCompatPadding="true">
+
+                        <ImageView
+                            n1:layout_width="match_parent"
+                            n1:layout_height="match_parent"
+                            n1:clickable="false"
+                            n1:padding="10dp"
+                            n1:src="@drawable/gridd" />
+
+                        <!--<TextView-->
+                        <!--n1:layout_width="wrap_content"-->
+                        <!--n1:layout_height="wrap_content"-->
+                        <!--n1:layout_marginTop="@dimen/_5sdp"-->
+                        <!--n1:clickable="false"-->
+                        <!--n1:text="C O L L A G E"-->
+                        <!--n1:textColor="@android:color/black"-->
+                        <!--n1:textSize="@dimen/_15sdp" />-->
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        n1:id="@+id/layout_single_editor"
+                        n1:layout_width="0.0dip"
+                        n1:layout_height="fill_parent"
+                        n1:layout_weight="1.0"
+                        n1:clickable="true"
+                        n1:gravity="center"
+                        n1:orientation="vertical"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="5dp"
+                        app:cardUseCompatPadding="true">
+
+                        <ImageView
+                            n1:layout_width="match_parent"
+                            n1:layout_height="match_parent"
+                            n1:clickable="false"
+                            n1:padding="10dp"
+
+                            n1:src="@drawable/editor" />
+
+                        <!--<TextView-->
+                        <!--n1:layout_width="wrap_content"-->
+                        <!--n1:layout_height="wrap_content"-->
+                        <!--n1:layout_marginTop="@dimen/_5sdp"-->
+                        <!--n1:text="P H O T O  E D I T O R"-->
+                        <!--n1:textColor="@android:color/black"-->
+                        <!--n1:textSize="@dimen/_15sdp" />-->
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        n1:id="@+id/layout_scrapbook"
+                        n1:layout_width="0.0dip"
+                        n1:layout_height="fill_parent"
+                        n1:layout_weight="1.0"
+                        n1:gravity="center"
+                        n1:orientation="vertical"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="5dp"
+                        app:cardUseCompatPadding="true">
+
+                        <ImageView
+                            n1:layout_width="match_parent"
+                            n1:layout_height="match_parent"
+                            n1:clickable="false"
+                            n1:padding="10dp"
+
+                            n1:src="@drawable/collagescrapbook" />
+
+                        <!--<TextView-->
+                        <!--n1:layout_width="wrap_content"-->
+                        <!--n1:layout_height="wrap_content"-->
+                        <!--n1:layout_marginTop="@dimen/_5sdp"-->
+                        <!--n1:clickable="false"-->
+                        <!--n1:text="S C R A P B O O K"-->
+                        <!--n1:textColor="@android:color/black"-->
+                        <!--n1:textSize="@dimen/_15sdp" />-->
+                    </androidx.cardview.widget.CardView>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    n1:id="@+id/bottom_holder"
+                    n1:layout_width="fill_parent"
+                    n1:layout_height="0.0dip"
+                    n1:layout_gravity="center"
+                    n1:layout_weight="1.0"
+                    n1:orientation="horizontal">
+
+
+                    <androidx.cardview.widget.CardView
+                        n1:id="@+id/layout_camera"
+                        n1:layout_width="0.0dip"
+                        n1:layout_height="fill_parent"
+                        n1:layout_weight="1.0"
+                        n1:clickable="true"
+                        n1:gravity="center"
+                        n1:orientation="vertical"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="5dp"
+                        app:cardUseCompatPadding="true">
+
+                        <!--<android.support.v7.widget.CardView-->
+                        <!--n1:layout_width="match_parent"-->
+                        <!--n1:layout_height="match_parent"-->
+                        <!--app:cardCornerRadius="5dp"-->
+                        <!--n1:elevation="5dp"-->
+                        <!--n1:gravity="center">-->
+
+                        <ImageView
+                            n1:layout_width="wrap_content"
+                            n1:layout_height="wrap_content"
+                            n1:clickable="false"
+                            n1:padding="10dp"
+                            n1:src="@drawable/collage_camerawhite" />
+                        <!--</android.support.v7.widget.CardView>-->
+
+                        <!--<TextView-->
+                        <!--n1:layout_width="wrap_content"-->
+                        <!--n1:layout_height="wrap_content"-->
+                        <!--n1:layout_marginTop="@dimen/_5sdp"-->
+                        <!--n1:clickable="false"-->
+                        <!--n1:text="C A M E R A"-->
+                        <!--n1:textColor="@android:color/black"-->
+                        <!--n1:textSize="@dimen/_15sdp" />-->
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        n1:id="@+id/layout_mirror"
+                        n1:layout_width="0.0dip"
+                        n1:layout_height="fill_parent"
+                        n1:layout_weight="1.0"
+                        n1:clickable="true"
+                        n1:gravity="center"
+                        n1:orientation="vertical"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="5dp"
+                        app:cardUseCompatPadding="true">
+
+                        <ImageView
+                            n1:layout_width="wrap_content"
+                            n1:layout_height="wrap_content"
+                            n1:clickable="false"
+                            n1:padding="10dp"
+
+                            n1:src="@drawable/makeup" />
+
+                        <!--<TextView-->
+                        <!--n1:layout_width="wrap_content"-->
+                        <!--n1:layout_height="wrap_content"-->
+                        <!--n1:layout_marginTop="@dimen/_5sdp"-->
+                        <!--n1:clickable="false"-->
+                        <!--n1:text="M I R R O R"-->
+                        <!--n1:textColor="@android:color/black"-->
+                        <!--n1:textSize="@dimen/_15sdp" />-->
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        n1:id="@+id/ivmycreation"
+                        n1:layout_width="0.0dip"
+                        n1:layout_height="fill_parent"
+                        n1:layout_weight="1.0"
+                        n1:clickable="true"
+                        n1:gravity="center"
+                        n1:orientation="vertical"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="5dp"
+                        app:cardUseCompatPadding="true">
+
+                        <ImageView
+                            n1:layout_width="wrap_content"
+                            n1:layout_height="wrap_content"
+                            n1:clickable="false"
+                            n1:padding="10dp"
+                            n1:src="@drawable/ic_mycreation" />
+
+                        <!--<TextView-->
+                        <!--n1:layout_width="wrap_content"-->
+                        <!--n1:layout_height="wrap_content"-->
+                        <!--n1:layout_marginTop="@dimen/_5sdp"-->
+                        <!--n1:clickable="false"-->
+                        <!--n1:text="MY Creation"-->
+                        <!--n1:textAllCaps="true"-->
+                        <!--n1:textColor="@android:color/black"-->
+                        <!--n1:textSize="@dimen/_15sdp" />-->
+                    </androidx.cardview.widget.CardView>
+
+                </LinearLayout>
+
+                <!--<LinearLayout-->
+                <!--n1:id="@+id/bottom_holder2"-->
+                <!--n1:layout_width="fill_parent"-->
+                <!--n1:layout_height="0.0dip"-->
+                <!--n1:layout_gravity="center"-->
+                <!--n1:layout_weight="1.0"-->
+                <!--n1:orientation="horizontal">-->
+
+
+                <!--&lt;!&ndash;<LinearLayout&ndash;&gt;-->
+                <!--&lt;!&ndash;n1:id="@+id/layout_rate"&ndash;&gt;-->
+                <!--&lt;!&ndash;n1:layout_width="0.0dip"&ndash;&gt;-->
+                <!--&lt;!&ndash;n1:layout_height="fill_parent"&ndash;&gt;-->
+                <!--&lt;!&ndash;n1:layout_marginBottom="@dimen/_5sdp"&ndash;&gt;-->
+                <!--&lt;!&ndash;n1:layout_marginRight="@dimen/_5sdp"&ndash;&gt;-->
+                <!--&lt;!&ndash;n1:layout_weight="1.0"&ndash;&gt;-->
+                <!--&lt;!&ndash;n1:background="@drawable/selector_collage_violate"&ndash;&gt;-->
+                <!--&lt;!&ndash;n1:clickable="true"&ndash;&gt;-->
+                <!--&lt;!&ndash;n1:gravity="center"&ndash;&gt;-->
+                <!--&lt;!&ndash;n1:orientation="vertical">&ndash;&gt;-->
+
+                <!--&lt;!&ndash;<ImageView&ndash;&gt;-->
+                <!--&lt;!&ndash;n1:layout_width="50.0dip"&ndash;&gt;-->
+                <!--&lt;!&ndash;n1:layout_height="50.0dip"&ndash;&gt;-->
+                <!--&lt;!&ndash;n1:clickable="false"&ndash;&gt;-->
+                <!--&lt;!&ndash;n1:src="@drawable/rateicon" />&ndash;&gt;-->
+
+                <!--&lt;!&ndash;<TextView&ndash;&gt;-->
+                <!--&lt;!&ndash;n1:layout_width="wrap_content"&ndash;&gt;-->
+                <!--&lt;!&ndash;n1:layout_height="wrap_content"&ndash;&gt;-->
+                <!--&lt;!&ndash;n1:layout_marginTop="@dimen/_5sdp"&ndash;&gt;-->
+                <!--&lt;!&ndash;n1:clickable="false"&ndash;&gt;-->
+                <!--&lt;!&ndash;n1:text="R A T E U S"&ndash;&gt;-->
+                <!--&lt;!&ndash;n1:textColor="@android:color/black"&ndash;&gt;-->
+                <!--&lt;!&ndash;n1:textSize="@dimen/_15sdp" />&ndash;&gt;-->
+                <!--&lt;!&ndash;</LinearLayout>&ndash;&gt;-->
+
+
+                <!--</LinearLayout>-->
+
+                <!--<LinearLayout-->
+                <!--n1:id="@+id/bottom_holder1"-->
+                <!--n1:layout_width="fill_parent"-->
+                <!--n1:layout_height="0.0dip"-->
+                <!--n1:layout_gravity="center"-->
+                <!--n1:layout_weight="1.0"-->
+                <!--n1:orientation="horizontal">-->
+
+                <!--<LinearLayout-->
+                <!--n1:id="@+id/layout_moreapps"-->
+                <!--n1:layout_width="0.0dip"-->
+                <!--n1:layout_height="fill_parent"-->
+                <!--n1:layout_marginBottom="@dimen/_5sdp"-->
+                <!--n1:layout_marginLeft="@dimen/_5sdp"-->
+                <!--n1:layout_marginRight="@dimen/_5sdp"-->
+                <!--n1:layout_weight="1.0"-->
+                <!--n1:background="@drawable/selector_collage_violate"-->
+                <!--n1:clickable="true"-->
+                <!--n1:gravity="center"-->
+                <!--n1:orientation="vertical">-->
+
+                <!--<ImageView-->
+                <!--n1:layout_width="50.0dip"-->
+                <!--n1:layout_height="50.0dip"-->
+                <!--n1:clickable="false"-->
+                <!--n1:src="@drawable/collage_moreapps" />-->
+
+                <!--<TextView-->
+                <!--n1:layout_width="wrap_content"-->
+                <!--n1:layout_height="wrap_content"-->
+                <!--n1:layout_marginTop="@dimen/_5sdp"-->
+                <!--n1:clickable="false"-->
+                <!--n1:text="M O R E  A P P"-->
+                <!--n1:textColor="@android:color/black"-->
+                <!--n1:textSize="@dimen/_15sdp" />-->
+                <!--</LinearLayout>-->
+
+                <!--<LinearLayout-->
+                <!--n1:id="@+id/layout_shareapps"-->
+                <!--n1:layout_width="0.0dip"-->
+                <!--n1:layout_height="fill_parent"-->
+                <!--n1:layout_marginBottom="@dimen/_5sdp"-->
+                <!--n1:layout_marginRight="@dimen/_5sdp"-->
+                <!--n1:layout_weight="1.0"-->
+                <!--n1:background="@drawable/selector_collage_violate"-->
+                <!--n1:clickable="true"-->
+                <!--n1:gravity="center"-->
+                <!--n1:orientation="vertical">-->
+
+                <!--<ImageView-->
+                <!--n1:layout_width="50.0dip"-->
+                <!--n1:layout_height="50.0dip"-->
+                <!--n1:clickable="false"-->
+                <!--n1:src="@drawable/collage_shareapps" />-->
+
+                <!--<TextView-->
+                <!--n1:layout_width="wrap_content"-->
+                <!--n1:layout_height="wrap_content"-->
+                <!--n1:layout_marginTop="@dimen/_5sdp"-->
+                <!--n1:clickable="false"-->
+                <!--n1:text="S H A R E  A P P"-->
+                <!--n1:textColor="@android:color/black"-->
+                <!--n1:textSize="@dimen/_15sdp" />-->
+                <!--</LinearLayout>-->
+                <!--</LinearLayout>-->
+
+                <!--<LinearLayout-->
+                <!--n1:id="@+id/bottom_holder3"-->
+                <!--n1:layout_width="fill_parent"-->
+                <!--n1:layout_height="0.0dip"-->
+                <!--n1:layout_gravity="center"-->
+                <!--n1:layout_weight="1.0"-->
+                <!--n1:orientation="horizontal">-->
+
+                <!--&lt;!&ndash;<LinearLayout&ndash;&gt;-->
+                <!--&lt;!&ndash;n1:id="@+id/layout_privacy"&ndash;&gt;-->
+                <!--&lt;!&ndash;n1:layout_width="0.0dip"&ndash;&gt;-->
+                <!--&lt;!&ndash;n1:layout_height="fill_parent"&ndash;&gt;-->
+                <!--&lt;!&ndash;n1:layout_marginBottom="@dimen/_5sdp"&ndash;&gt;-->
+                <!--&lt;!&ndash;n1:layout_marginLeft="@dimen/_5sdp"&ndash;&gt;-->
+                <!--&lt;!&ndash;n1:layout_marginRight="@dimen/_5sdp"&ndash;&gt;-->
+                <!--&lt;!&ndash;n1:layout_weight="1.0"&ndash;&gt;-->
+                <!--&lt;!&ndash;n1:background="@drawable/selector_collage_violate"&ndash;&gt;-->
+                <!--&lt;!&ndash;n1:clickable="true"&ndash;&gt;-->
+                <!--&lt;!&ndash;n1:gravity="center"&ndash;&gt;-->
+                <!--&lt;!&ndash;n1:orientation="vertical">&ndash;&gt;-->
+
+                <!--&lt;!&ndash;<ImageView&ndash;&gt;-->
+                <!--&lt;!&ndash;n1:layout_width="50.0dip"&ndash;&gt;-->
+                <!--&lt;!&ndash;n1:layout_height="50.0dip"&ndash;&gt;-->
+                <!--&lt;!&ndash;n1:clickable="false"&ndash;&gt;-->
+                <!--&lt;!&ndash;n1:src="@drawable/collage_privacypolicy" />&ndash;&gt;-->
+
+                <!--&lt;!&ndash;<TextView&ndash;&gt;-->
+                <!--&lt;!&ndash;n1:layout_width="wrap_content"&ndash;&gt;-->
+                <!--&lt;!&ndash;n1:layout_height="wrap_content"&ndash;&gt;-->
+                <!--&lt;!&ndash;n1:layout_marginTop="@dimen/_5sdp"&ndash;&gt;-->
+                <!--&lt;!&ndash;n1:clickable="false"&ndash;&gt;-->
+                <!--&lt;!&ndash;n1:text="P R I V A C Y  P O L I C Y"&ndash;&gt;-->
+                <!--&lt;!&ndash;n1:textColor="@android:color/black"&ndash;&gt;-->
+                <!--&lt;!&ndash;n1:textSize="@dimen/_15sdp" />&ndash;&gt;-->
+                <!--&lt;!&ndash;</LinearLayout>&ndash;&gt;-->
+
+                <!--&lt;!&ndash;<LinearLayout&ndash;&gt;-->
+                <!--&lt;!&ndash;n1:id="@+id/ivmycreation"&ndash;&gt;-->
+                <!--&lt;!&ndash;n1:layout_width="0.0dip"&ndash;&gt;-->
+                <!--&lt;!&ndash;n1:layout_height="fill_parent"&ndash;&gt;-->
+                <!--&lt;!&ndash;n1:layout_marginBottom="@dimen/_5sdp"&ndash;&gt;-->
+                <!--&lt;!&ndash;n1:layout_marginRight="@dimen/_5sdp"&ndash;&gt;-->
+                <!--&lt;!&ndash;n1:layout_weight="1.0"&ndash;&gt;-->
+                <!--&lt;!&ndash;n1:background="@drawable/selector_collage_violate"&ndash;&gt;-->
+                <!--&lt;!&ndash;n1:clickable="true"&ndash;&gt;-->
+                <!--&lt;!&ndash;n1:gravity="center"&ndash;&gt;-->
+                <!--&lt;!&ndash;n1:orientation="vertical">&ndash;&gt;-->
+
+                <!--&lt;!&ndash;<ImageView&ndash;&gt;-->
+                <!--&lt;!&ndash;n1:layout_width="50.0dip"&ndash;&gt;-->
+                <!--&lt;!&ndash;n1:layout_height="50.0dip"&ndash;&gt;-->
+                <!--&lt;!&ndash;n1:clickable="false"&ndash;&gt;-->
+                <!--&lt;!&ndash;n1:src="@drawable/ic_mycreation" />&ndash;&gt;-->
+
+                <!--&lt;!&ndash;<TextView&ndash;&gt;-->
+                <!--&lt;!&ndash;n1:layout_width="wrap_content"&ndash;&gt;-->
+                <!--&lt;!&ndash;n1:layout_height="wrap_content"&ndash;&gt;-->
+                <!--&lt;!&ndash;n1:layout_marginTop="@dimen/_5sdp"&ndash;&gt;-->
+                <!--&lt;!&ndash;n1:clickable="false"&ndash;&gt;-->
+                <!--&lt;!&ndash;n1:text="MY Creation"&ndash;&gt;-->
+                <!--&lt;!&ndash;n1:textAllCaps="true"&ndash;&gt;-->
+                <!--&lt;!&ndash;n1:textColor="@android:color/black"&ndash;&gt;-->
+                <!--&lt;!&ndash;n1:textSize="@dimen/_15sdp" />&ndash;&gt;-->
+                <!--&lt;!&ndash;</LinearLayout>&ndash;&gt;-->
+
+                <!--</LinearLayout>-->
+            </LinearLayout>
+
+            <RelativeLayout
+                n1:id="@+id/g_adView"
+                n1:layout_width="wrap_content"
+                n1:layout_height="wrap_content"
+                n1:layout_alignParentBottom="true"
+                n1:layout_below="@+id/bottom_holder3"></RelativeLayout>
+
+        </LinearLayout>
+
+        <FrameLayout
+            n1:id="@+id/gallery_fragment_container"
+            n1:layout_width="fill_parent"
+            n1:layout_height="fill_parent"
+            n1:layout_alignParentLeft="true"
+            n1:layout_alignParentStart="true"
+            n1:layout_alignParentTop="true" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        n1:layout_width="wrap_content"
+        n1:layout_height="fill_parent"
+        n1:layout_gravity="start"
+        n1:choiceMode="singleChoice"
+        n1:orientation="vertical">
+
+        <LinearLayout
+            n1:layout_width="250.0dip"
+            n1:layout_height="fill_parent"
+            n1:layout_below="@+id/uu"
+            n1:layout_gravity="start"
+            n1:background="@color/primary"
+            n1:choiceMode="singleChoice"
+            n1:orientation="vertical">
+
+            <ListView
+                n1:id="@+id/left_drawer"
+                n1:layout_width="fill_parent"
+                n1:layout_height="wrap_content"
+                n1:layout_gravity="start"
+                n1:background="@color/primary"
+                n1:choiceMode="singleChoice"
+                n1:divider="#ff57b2ae"
+                n1:dividerHeight="0.0dip" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+</androidx.drawerlayout.widget.DrawerLayout>

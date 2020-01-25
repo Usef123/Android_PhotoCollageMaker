@@ -1,0 +1,494 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:n1="http://schemas.android.com/apk/res/android"
+    n1:id="@+id/layout_mirror_activity"
+    n1:layout_width="fill_parent"
+    n1:layout_height="fill_parent"
+    n1:background="@color/bg">
+
+    <RelativeLayout
+        n1:id="@+id/text_view_fragment_container"
+        n1:layout_width="fill_parent"
+        n1:layout_height="fill_parent"
+        n1:orientation="horizontal" />
+
+    <LinearLayout
+        n1:id="@+id/mirror_header"
+        n1:layout_width="fill_parent"
+        n1:layout_height="wrap_content"
+        n1:background="@color/primary"
+        n1:orientation="vertical">
+
+        <LinearLayout
+            n1:layout_width="match_parent"
+            n1:layout_height="56dp"
+            n1:weightSum="2"
+            n1:orientation="horizontal">
+
+            <TextView
+                n1:layout_width="wrap_content"
+                n1:text="Mirror Collage"
+                n1:layout_gravity="center"
+                n1:gravity="center"
+                n1:textColor="@color/white"
+                n1:padding="3dp"
+                style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+                n1:textStyle="bold"
+                n1:layout_weight="1.5"
+                n1:layout_height="match_parent" />
+
+            <LinearLayout
+                n1:id="@+id/closeScreen"
+                n1:layout_width="fill_parent"
+                n1:layout_height="fill_parent"
+                n1:layout_weight="1.0"
+                n1:background="@drawable/collage_footer_button"
+                n1:gravity="center"
+                n1:visibility="gone"
+                n1:onClick="myClickHandler">
+
+                <ImageView
+                    n1:layout_width="15.0dip"
+                    n1:layout_height="15.0dip"
+                    n1:src="@drawable/close"
+                    n1:tint="@color/text_white" />
+
+                <TextView
+                    n1:layout_width="wrap_content"
+                    n1:layout_height="wrap_content"
+                    n1:layout_marginLeft="10.0dip"
+                    n1:gravity="center"
+                    n1:text="Close"
+                    n1:textColor="@color/text_white"
+                    n1:textSize="@dimen/text_size_large" />
+            </LinearLayout>
+
+            <ImageButton
+                n1:id="@+id/button_save_mirror_image"
+                n1:layout_height="match_parent"
+                n1:layout_width="0dp"
+                n1:paddingBottom="@dimen/padding_small"
+                n1:paddingTop="@dimen/padding_small"
+                n1:background="@drawable/collage_footer_button"
+                n1:layout_gravity="bottom|center"
+                n1:gravity="center"
+                n1:src="@drawable/ic_save"
+                n1:onClick="myClickHandler"
+                n1:layout_weight="0.5">
+
+            </ImageButton>
+
+        </LinearLayout>
+
+        <LinearLayout
+            n1:id="@+id/banner_container"
+            n1:layout_width="fill_parent"
+            n1:layout_height="wrap_content"
+            n1:orientation="horizontal" />
+
+    </LinearLayout>
+
+    <com.abcd.photocollagemaker.utils.MyViewFlipper
+        n1:id="@+id/mirror_view_flipper"
+        n1:layout_width="fill_parent"
+        n1:layout_height="wrap_content"
+        n1:layout_above="@+id/mirror_footer"
+        n1:gravity="bottom">
+
+        <LinearLayout
+            n1:id="@+id/mirror_combinations"
+            n1:layout_width="fill_parent"
+            n1:layout_height="wrap_content"
+            n1:layout_alignParentLeft="true"
+            n1:layout_gravity="bottom"
+            n1:background="@color/collage_tool_background_color"
+            n1:orientation="horizontal"
+            n1:padding="3.0dip"
+            n1:paddingRight="10.0dip">
+
+            <HorizontalScrollView
+                n1:id="@+id/horizontalScrollView2"
+                n1:layout_width="fill_parent"
+                n1:layout_height="wrap_content"
+                n1:background="@color/collage_tool_background_color"
+                n1:padding="1.0dip"
+                n1:paddingRight="0.0dip">
+
+                <LinearLayout
+                    n1:layout_width="wrap_content"
+                    n1:layout_height="wrap_content"
+                    n1:orientation="horizontal"
+                    n1:padding="1.0dip">
+
+                    <ImageView
+                        n1:id="@+id/button_m1"
+                        style="@style/mirror_button_style"
+                        n1:background="@color/footer_button_color_pressed"
+                        n1:src="@drawable/m1" />
+
+                    <ImageView
+                        n1:id="@+id/button_m2"
+                        style="@style/mirror_button_style"
+                        n1:src="@drawable/m2" />
+
+                    <ImageView
+                        n1:id="@+id/button_m3"
+                        style="@style/mirror_button_style"
+                        n1:src="@drawable/m3" />
+
+                    <ImageView
+                        n1:id="@+id/button_m4"
+                        style="@style/mirror_button_style"
+                        n1:src="@drawable/m4" />
+
+                    <ImageView
+                        n1:id="@+id/button_m5"
+                        style="@style/mirror_button_style"
+                        n1:src="@drawable/m5" />
+
+                    <ImageView
+                        n1:id="@+id/button_m6"
+                        style="@style/mirror_button_style"
+                        n1:src="@drawable/m6" />
+
+                    <ImageView
+                        n1:id="@+id/button_m7"
+                        style="@style/mirror_button_style"
+                        n1:src="@drawable/m7" />
+
+                    <ImageView
+                        n1:id="@+id/button_m8"
+                        style="@style/mirror_button_style"
+                        n1:src="@drawable/m8" />
+
+                    <ImageView
+                        n1:id="@+id/button_m9"
+                        style="@style/mirror_button_style"
+                        n1:src="@drawable/m9" />
+
+                    <ImageView
+                        n1:id="@+id/button_m10"
+                        style="@style/mirror_button_style"
+                        n1:src="@drawable/m10" />
+
+                    <ImageView
+                        n1:id="@+id/button_m11"
+                        style="@style/mirror_button_style"
+                        n1:src="@drawable/m11" />
+
+                    <ImageView
+                        n1:id="@+id/button_m12"
+                        style="@style/mirror_button_style"
+                        n1:src="@drawable/m12" />
+
+                    <ImageView
+                        n1:id="@+id/button_m13"
+                        style="@style/mirror_button_style"
+                        n1:src="@drawable/m13" />
+
+                    <ImageView
+                        n1:id="@+id/button_m14"
+                        style="@style/mirror_button_style"
+                        n1:src="@drawable/m14" />
+
+                    <ImageView
+                        n1:id="@+id/button_m15"
+                        style="@style/mirror_button_style"
+                        n1:src="@drawable/m15" />
+                </LinearLayout>
+            </HorizontalScrollView>
+        </LinearLayout>
+
+        <HorizontalScrollView
+            n1:id="@+id/horizontalScrollView3"
+            n1:layout_width="fill_parent"
+            n1:layout_height="wrap_content"
+            n1:layout_gravity="bottom"
+            n1:background="@color/collage_tool_background_color"
+            n1:padding="3.0dip"
+            n1:paddingRight="0.0dip">
+
+            <LinearLayout
+                n1:layout_width="wrap_content"
+                n1:layout_height="wrap_content"
+                n1:orientation="horizontal"
+                n1:padding="1.0dip">
+
+                <ImageView
+                    n1:id="@+id/button_3d_1"
+                    style="@style/mirror_button_style"
+                    n1:src="@drawable/mirror_3d_14_icon_left" />
+
+                <ImageView
+                    n1:id="@+id/button_3d_2"
+                    style="@style/mirror_button_style"
+                    n1:src="@drawable/mirror_3d_14_icon_right" />
+
+                <ImageView
+                    n1:id="@+id/button_3d_3"
+                    style="@style/mirror_button_style"
+                    n1:src="@drawable/mirror_3d_10_icon_left" />
+
+                <ImageView
+                    n1:id="@+id/button_3d_4"
+                    style="@style/mirror_button_style"
+                    n1:src="@drawable/mirror_3d_10_icon" />
+
+                <ImageView
+                    n1:id="@+id/button_3d_5"
+                    style="@style/mirror_button_style"
+                    n1:src="@drawable/mirror_3d_11_icon_left" />
+
+                <ImageView
+                    n1:id="@+id/button_3d_6"
+                    style="@style/mirror_button_style"
+                    n1:src="@drawable/mirror_3d_11_icon" />
+
+                <ImageView
+                    n1:id="@+id/button_3d_7"
+                    style="@style/mirror_button_style"
+                    n1:src="@drawable/mirror_3d_4_icon_left" />
+
+                <ImageView
+                    n1:id="@+id/button_3d_8"
+                    style="@style/mirror_button_style"
+                    n1:src="@drawable/mirror_3d_4_icon" />
+
+                <ImageView
+                    n1:id="@+id/button_3d_9"
+                    style="@style/mirror_button_style"
+                    n1:src="@drawable/mirror_3d_3_icon_left" />
+
+                <ImageView
+                    n1:id="@+id/button_3d_10"
+                    style="@style/mirror_button_style"
+                    n1:src="@drawable/mirror_3d_3_icon_right" />
+
+                <ImageView
+                    n1:id="@+id/button_3d_11"
+                    style="@style/mirror_button_style"
+                    n1:src="@drawable/mirror_3d_1_icon_left" />
+
+                <ImageView
+                    n1:id="@+id/button_3d_12"
+                    style="@style/mirror_button_style"
+                    n1:src="@drawable/mirror_3d_1_icon" />
+
+                <ImageView
+                    n1:id="@+id/button_3d_13"
+                    style="@style/mirror_button_style"
+                    n1:src="@drawable/mirror_3d_6_icon" />
+
+                <ImageView
+                    n1:id="@+id/button_3d_14"
+                    style="@style/mirror_button_style"
+                    n1:src="@drawable/mirror_3d_6_icon_left" />
+
+                <ImageView
+                    n1:id="@+id/button_3d_15"
+                    style="@style/mirror_button_style"
+                    n1:src="@drawable/mirror_3d_13_icon" />
+
+                <ImageView
+                    n1:id="@+id/button_3d_16"
+                    style="@style/mirror_button_style"
+                    n1:src="@drawable/mirror_3d_13_icon_right" />
+
+                <ImageView
+                    n1:id="@+id/button_3d_17"
+                    style="@style/mirror_button_style"
+                    n1:src="@drawable/mirror_3d_15_icon4" />
+
+                <ImageView
+                    n1:id="@+id/button_3d_18"
+                    style="@style/mirror_button_style"
+                    n1:src="@drawable/mirror_3d_15_icon2" />
+
+                <ImageView
+                    n1:id="@+id/button_3d_19"
+                    style="@style/mirror_button_style"
+                    n1:src="@drawable/mirror_3d_15_icon3" />
+
+                <ImageView
+                    n1:id="@+id/button_3d_20"
+                    style="@style/mirror_button_style"
+                    n1:src="@drawable/mirror_3d_15_icon" />
+
+                <ImageView
+                    n1:id="@+id/button_3d_21"
+                    style="@style/mirror_button_style"
+                    n1:src="@drawable/mirror_3d_16_icon4" />
+
+                <ImageView
+                    n1:id="@+id/button_3d_22"
+                    style="@style/mirror_button_style"
+                    n1:src="@drawable/mirror_3d_16_icon2" />
+
+                <ImageView
+                    n1:id="@+id/button_3d_23"
+                    style="@style/mirror_button_style"
+                    n1:src="@drawable/mirror_3d_16_icon3" />
+
+                <ImageView
+                    n1:id="@+id/button_3d_24"
+                    style="@style/mirror_button_style"
+                    n1:src="@drawable/mirror_3d_16_icon" />
+            </LinearLayout>
+        </HorizontalScrollView>
+
+        <LinearLayout
+            n1:id="@+id/mirror_ratios"
+            n1:layout_width="fill_parent"
+            n1:layout_height="wrap_content"
+            n1:layout_alignParentBottom="true"
+            n1:layout_alignParentLeft="true"
+            n1:layout_gravity="bottom"
+            n1:background="@color/collage_tool_background_color"
+            n1:orientation="horizontal"
+            n1:padding="3.0dip"
+            n1:paddingRight="5.0dip">
+
+            <HorizontalScrollView
+                n1:id="@+id/mirror_ratio_horizontalScrollView"
+                n1:layout_width="fill_parent"
+                n1:layout_height="wrap_content"
+                n1:layout_marginLeft="2.0dip"
+                n1:background="@color/collage_tool_background_color"
+                n1:padding="3.0dip"
+                n1:paddingRight="0.0dip">
+
+                <LinearLayout
+                    n1:layout_width="wrap_content"
+                    n1:layout_height="wrap_content"
+                    n1:orientation="horizontal"
+                    n1:padding="1.0dip">
+
+                    <Button
+                        n1:id="@+id/button11"
+                        style="@style/collage_ratio_button_style"
+                        n1:background="@drawable/selector_collage_ratio_button"
+                        n1:text="1:1" />
+
+                    <Button
+                        n1:id="@+id/button21"
+                        style="@style/collage_ratio_button_style"
+                        n1:text="2:1" />
+
+                    <Button
+                        n1:id="@+id/button12"
+                        style="@style/collage_ratio_button_style"
+                        n1:text="1:2" />
+
+                    <Button
+                        n1:id="@+id/button32"
+                        style="@style/collage_ratio_button_style"
+                        n1:text="3:2" />
+
+                    <Button
+                        n1:id="@+id/button23"
+                        style="@style/collage_ratio_button_style"
+                        n1:text="2:3" />
+
+                    <Button
+                        n1:id="@+id/button43"
+                        style="@style/collage_ratio_button_style"
+                        n1:text="4:3" />
+
+                    <Button
+                        n1:id="@+id/button34"
+                        style="@style/collage_ratio_button_style"
+                        n1:text="3:4" />
+
+                    <Button
+                        n1:id="@+id/button45"
+                        style="@style/collage_ratio_button_style"
+                        n1:text="4:5" />
+
+                    <Button
+                        n1:id="@+id/button57"
+                        style="@style/collage_ratio_button_style"
+                        n1:text="5:7" />
+
+                    <Button
+                        n1:id="@+id/button169"
+                        style="@style/collage_ratio_button_style"
+                        n1:text="16:9" />
+
+                    <Button
+                        n1:id="@+id/button916"
+                        style="@style/collage_ratio_button_style"
+                        n1:text="9:16" />
+                </LinearLayout>
+            </HorizontalScrollView>
+        </LinearLayout>
+
+        <FrameLayout
+            n1:id="@+id/mirror_effect_fragment_container"
+            n1:layout_width="fill_parent"
+            n1:layout_height="wrap_content"
+            n1:layout_above="@+id/mirror_footer" />
+
+        <View
+            n1:layout_width="1.0dip"
+            n1:layout_height="1.0dip" />
+    </com.abcd.photocollagemaker.utils.MyViewFlipper>
+
+    <LinearLayout
+        n1:id="@+id/mirror_footer"
+        n1:layout_width="fill_parent"
+        n1:layout_height="wrap_content"
+        n1:layout_alignParentBottom="true"
+        n1:orientation="horizontal">
+
+        <Button
+            n1:id="@+id/button_mirror"
+            style="@style/mirror_footer_imagebutton_style"
+            n1:drawableTop="@drawable/m0"
+            n1:text="Mirror" />
+
+        <Button
+            n1:id="@+id/button_mirror_3d"
+            style="@style/mirror_footer_imagebutton_style"
+            n1:drawableTop="@drawable/d3"
+            n1:text="Shape" />
+
+        <Button
+            n1:id="@+id/button_mirror_ratio"
+            style="@style/mirror_footer_imagebutton_style"
+            n1:drawableTop="@drawable/mirror_ratio"
+            n1:text="Ratio" />
+
+        <Button
+            n1:id="@+id/button_mirror_effect"
+            style="@style/mirror_footer_imagebutton_style"
+            n1:drawableTop="@drawable/mirror_effect"
+            n1:text="Effect"
+            n1:visibility="gone" />
+
+        <Button
+            n1:id="@+id/button_mirror_frame"
+            style="@style/mirror_footer_imagebutton_style"
+            n1:drawableTop="@drawable/mirror_frame"
+            n1:text="Frame"
+            n1:visibility="gone" />
+
+        <Button
+            n1:id="@+id/button_mirror_text"
+            style="@style/mirror_footer_imagebutton_style"
+            n1:drawableTop="@drawable/mirror_text_icon"
+            n1:text="Text" />
+
+        <Button
+            n1:id="@+id/button_mirror_sticker"
+            style="@style/mirror_footer_imagebutton_style"
+            n1:drawableTop="@drawable/sticker_icon"
+            n1:text="Sticker"
+            n1:visibility="gone" />
+
+        <Button
+            n1:id="@+id/button_mirror_adj"
+            style="@style/mirror_footer_imagebutton_style"
+            n1:drawableTop="@drawable/mirror_adjustment"
+            n1:text="Filter"
+            n1:visibility="visible" />
+    </LinearLayout>
+</RelativeLayout>

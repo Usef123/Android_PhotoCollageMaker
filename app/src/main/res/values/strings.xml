@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">PhotoCollageMaker</string>
+
+    <!--//Change Your ADMOB ID's Here-->
+    <string name="admob_app_id">ca-app-pub-3940256099942544~3347511713</string>
+    <string name="interstitial_full_screen">ca-app-pub-3940256099942544/1033173712</string>
+    <string name="banner_ad_id">ca-app-pub-3940256099942544/6300978111</string>
+
+    <!--//Change Your FaceBook Audience Network Ads ID Here-->
+    <string name="fb_interstitial">YOUR_PLACEMENT_ID</string>
+    <string name="fb_medium_rectangle_banner">YOUR_PLACEMENT_ID</string>
+    <string name="fb_banner">YOUR_PLACEMENT_ID</string>
+
+
+    <string name="drawer_title_more_apps">More Apps</string>
+    <string name="drawer_title_privacy">Privacy Policy</string>
+    <string name="drawer_title_ratting">Rate Us</string>
+    <string name="drawer_title_share_friend">Share App</string>
+    <string name="canvas_text_color">Color</string>
+    <string name="canvas_text_enter_text">Please enter text</string>
+    <string name="canvas_text_hint">Enter Text</string>
+    <string name="collage_lib_delete_message">Do you want to delete image?</string>
+    <string name="directory">/PhotoCollageMaker/</string>
+    <string name="effect_parameter_bundle_name">global_parameter</string>
+    <string name="error_img_not_found">Oops! please try again.</string>
+    <string name="gallery_lib_max">Max %d</string>
+    <string name="gallery_no_more">No More item</string>
+    <string name="gallery_select_an_album">Select Album</string>
+    <string name="gallery_select_one">Select one</string>
+    <string name="loading_image">Loading image</string>
+    <string name="preview_text">Enter Text</string>
+    <string name="txt_press_again_to_exit">Press again to exit</string>
+</resources>

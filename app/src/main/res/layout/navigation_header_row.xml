@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="250.0dip"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/imgNavigationIcon"
+        android:layout_width="250.0dip"
+        android:layout_height="122.0dip"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="5.0dip"
+        android:scaleType="fitXY"
+        android:src="@drawable/rad_drawer_icon" />
+</RelativeLayout>

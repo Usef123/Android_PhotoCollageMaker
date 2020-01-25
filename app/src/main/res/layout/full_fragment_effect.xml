@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout n1:background="@android:color/white"
+    n1:clickable="true"
+    n1:layout_width="fill_parent"
+    n1:layout_height="fill_parent"
+    xmlns:n1="http://schemas.android.com/apk/res/android">
+
+    <ImageView
+        n1:id="@+id/imageView1"
+        n1:layout_width="fill_parent"
+        n1:layout_height="fill_parent"
+        n1:scaleType="fitCenter"
+        n1:adjustViewBounds="true"
+        n1:layout_above="@+id/button_dummy"
+        n1:layout_below="@+id/full_fragment_apply_filter_header"
+        n1:layout_centerHorizontal="true" />
+
+    <LinearLayout
+        n1:background="@color/primary"
+        n1:layout_width="fill_parent"
+        n1:layout_height="@dimen/_40sdp"
+        n1:layout_alignParentTop="true" />
+
+    <LinearLayout
+        n1:gravity="center_vertical"
+        n1:orientation="horizontal"
+        n1:id="@+id/full_fragment_apply_filter_header"
+        n1:background="@color/primary"
+        n1:visibility="visible"
+        n1:layout_width="fill_parent"
+        n1:layout_height="@dimen/_40sdp"
+        n1:layout_alignParentTop="true">
+
+        <TextView
+            n1:gravity="center"
+            n1:id="@+id/button_cancel_filter"
+            n1:background="@drawable/selector_btn_header"
+            n1:clickable="true"
+            n1:text="@android:string/cancel"
+            style="@style/effect_header_button_style" />
+
+        <TextView
+            n1:gravity="center"
+            n1:id="@+id/button_apply_filter"
+            n1:background="@drawable/selector_btn_header"
+            n1:clickable="true"
+            n1:text="@android:string/ok"
+            style="@style/effect_header_button_style" />
+    </LinearLayout>
+
+    <FrameLayout
+        n1:id="@+id/fragment_container"
+        n1:layout_width="fill_parent"
+        n1:layout_height="wrap_content"
+        n1:layout_alignParentBottom="true" />
+
+    <LinearLayout
+        n1:orientation="horizontal"
+        n1:id="@+id/button_dummy"
+        n1:visibility="invisible"
+        n1:layout_width="wrap_content"
+        n1:layout_height="wrap_content"
+        n1:layout_alignParentBottom="true">
+
+        <Button
+            n1:text="Fx"
+            n1:drawableTop="@drawable/lib_effect"
+            style="@style/effect_footer_imagebutton_style" />
+    </LinearLayout>
+</RelativeLayout>

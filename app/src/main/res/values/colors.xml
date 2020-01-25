@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="accent">#f2c748</color>
+    <color name="bg">#ff58554e</color>
+    <color name="blue">#ff1ea0d7</color>
+    <color name="button_text_color">#ff919191</color>
+    <color name="collage_tool_background_color">#ff535353</color>
+    <color name="divider_light">#ffdddddd</color>
+    <color name="footer_button_color_pressed">#ff1ea0d7</color>
+    <color name="gallery_ok_button_normal">#ff1ea0d7</color>
+    <color name="gallery_ok_button_pressed">#6ab2d1</color>
+    <color name="primary">#ff3a3a3a</color>
+    <color name="primary_dark">#f2c748</color>
+    <color name="red">#ff1ea0d7</color>
+    <color name="text_white">#ffffffff</color>
+    <color name="view_flipper_bg_color">#ff535353</color>
+    <color name="white">#ffffffff</color>
+    <color name="yellow">#f2c748</color>
+
+</resources>
