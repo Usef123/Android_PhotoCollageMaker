@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">PhotoCollageMaker</string>
+    <string name="app_name">CityBooks</string>
 
     <!--//Change Your ADMOB ID's Here-->
     <string name="admob_app_id">ca-app-pub-3940256099942544~3347511713</string>

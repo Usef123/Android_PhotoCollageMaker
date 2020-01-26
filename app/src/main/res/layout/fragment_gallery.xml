@@ -86,7 +86,7 @@
             n1:layout_alignParentRight="true"
             n1:background="@drawable/selector_gallery_ok_button_bg"
             n1:drawableRight="@drawable/gallery_ic_right_arrow"
-            n1:text="Next"
+            n1:text="Design book now"
             n1:textColor="#ffffffff" />
 
         <TextView

@@ -87,7 +87,7 @@
 
     </LinearLayout>
 
-    <com.abcd.photocollagemaker.utils.MyViewFlipper
+    <com.greendream.photocollagemaker.utils.MyViewFlipper
         n1:id="@+id/mirror_view_flipper"
         n1:layout_width="fill_parent"
         n1:layout_height="wrap_content"
@@ -430,7 +430,7 @@
         <View
             n1:layout_width="1.0dip"
             n1:layout_height="1.0dip" />
-    </com.abcd.photocollagemaker.utils.MyViewFlipper>
+    </com.greendream.photocollagemaker.utils.MyViewFlipper>
 
     <LinearLayout
         n1:id="@+id/mirror_footer"

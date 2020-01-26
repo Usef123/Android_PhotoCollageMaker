@@ -71,7 +71,8 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/share_options"
         android:layout_gravity="center_horizontal"
-        android:gravity="center" />
+        android:gravity="center"
+        android:visibility="gone"/>
 
     <LinearLayout
         android:id="@+id/share_options"
@@ -80,7 +81,8 @@
         android:layout_alignParentBottom="true"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="2dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:visibility="gone">
 
         <LinearLayout
             android:id="@+id/llWhatsApp"

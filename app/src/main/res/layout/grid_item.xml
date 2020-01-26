@@ -11,7 +11,7 @@
         n1:layout_width="match_parent"
         n1:layout_height="wrap_content">
 
-        <com.abcd.photocollagemaker.gallerylib.GallerySquareImageView
+        <com.greendream.photocollagemaker.gallerylib.GallerySquareImageView
             n1:id="@+id/imageView"
             n1:layout_width="fill_parent"
             n1:layout_height="wrap_content"

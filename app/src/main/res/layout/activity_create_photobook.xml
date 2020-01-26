@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/white"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:padding="20dp">
+
+<!--    <RelativeLayout-->
+<!--        android:id="@+id/container_toolbar"-->
+<!--        android:layout_width="fill_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="vertical">-->
+
+<!--        <include-->
+<!--            android:id="@+id/toolbar"-->
+<!--            layout="@layout/toolbar" />-->
+<!--    </RelativeLayout>-->
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Format"/>
+
+<!--    <org.angmarch.views.NiceSpinner-->
+<!--        android:id="@+id/spinner_format"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginBottom="20dp"/>-->
+    <com.tiper.MaterialSpinner
+        android:id="@+id/spinner_format"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Book binding"/>
+
+<!--    <org.angmarch.views.NiceSpinner-->
+<!--        android:id="@+id/spinner_binding"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginBottom="20dp"/>-->
+    <com.tiper.MaterialSpinner
+        android:id="@+id/spinner_binding"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Number of pages"/>
+
+<!--    <org.angmarch.views.NiceSpinner-->
+<!--        android:id="@+id/spinner_pages"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginBottom="20dp"/>-->
+    <com.tiper.MaterialSpinner
+        android:id="@+id/spinner_pages"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#ECECEC"
+        android:layout_marginBottom="20dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginHorizontal="20dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:text="Price : "/>
+
+        <TextView
+            android:id="@+id/txt_price"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:text="$ 100"/>
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/btn_create"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="50dp"
+        android:text="Create PhotoBook"
+        android:background="@drawable/create_button_background"/>
+</LinearLayout>
+
+

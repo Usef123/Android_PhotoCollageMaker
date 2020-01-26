@@ -64,7 +64,7 @@
     </LinearLayout>
 
 
-    <com.abcd.photocollagemaker.utils.MyViewFlipper
+    <com.greendream.photocollagemaker.utils.MyViewFlipper
         n1:id="@+id/collage_view_flipper"
         n1:layout_width="fill_parent"
         n1:layout_height="wrap_content"
@@ -303,7 +303,7 @@
             n1:layout_width="1.0dip"
             n1:layout_height="1.0dip"
             n1:visibility="invisible" />
-    </com.abcd.photocollagemaker.utils.MyViewFlipper>
+    </com.greendream.photocollagemaker.utils.MyViewFlipper>
 
     <HorizontalScrollView
         n1:id="@+id/collage_footer"

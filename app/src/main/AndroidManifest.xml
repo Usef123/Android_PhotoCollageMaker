@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.abcd.photocollagemaker">
+    package="com.greendream.photocollagemaker">
 
     <uses-feature
         android:name="android.hardware.camera"
@@ -9,18 +9,20 @@
 
     <uses-permission android:name="android.permission.SET_WALLPAPER" />
     <uses-permission android:name="android.permission.SET_WALLPAPER_HINTS" />
-    <uses-permission android:name="android.permission.MANAGE_DOCUMENTS" />
+<!--    <uses-permission android:name="android.permission.MANAGE_DOCUMENTS" />-->
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.MEDIA_CONTENT_CONTROL" />
+    <uses-permission android:name="android.permission.MEDIA_CONTENT_CONTROL"
+        tools:ignore="ProtectedPermissions" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.READ_USER_DICTIONARY"/>
 
     <application
-        android:name="com.abcd.photocollagemaker.MyApplication"
+        android:name=".MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -28,39 +30,45 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
+        android:requestLegacyExternalStorage="true"
         tools:ignore="GoogleAppIndexingWarning">
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="@string/admob_app_id" />
 
-        <activity android:name="com.abcd.photocollagemaker.SplashActivity">
+        <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
-            android:name="com.abcd.photocollagemaker.activities.MainActivity"
+            android:name=".activities.CreatePhotoBookActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity
+            android:name=".activities.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme_NoActionBar" />
 
         <activity
-            android:name="com.abcd.photocollagemaker.collagelib.CollageActivity"
+            android:name=".collagelib.CollageActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.abcd.photocollagemaker.activities.MirrorNewActivity"
+            android:name=".activities.MirrorNewActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.abcd.photocollagemaker.PrivacyPolicyActivity"
+            android:name=".PrivacyPolicyActivity"
             android:screenOrientation="portrait" />
 
 
         <activity
-            android:name="com.abcd.photocollagemaker.share.ImageShareActivity"
+            android:name=".share.ImageShareActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.abcd.photocollagemaker.share.MyCreationActivity"
+            android:name=".share.MyCreationActivity"
             android:screenOrientation="portrait" />
 
         <provider
