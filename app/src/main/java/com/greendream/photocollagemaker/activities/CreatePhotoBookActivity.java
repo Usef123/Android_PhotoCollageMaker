@@ -18,6 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.greendream.photocollagemaker.Glob;
 import com.greendream.photocollagemaker.R;
+import com.greendream.photocollagemaker.photogrid.DraggableGridExampleActivity;
 import com.tiper.MaterialSpinner;
 
 import org.angmarch.views.NiceSpinner;
@@ -120,7 +121,7 @@ public class CreatePhotoBookActivity extends AppCompatActivity {
         btnCreate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity( new Intent(CreatePhotoBookActivity.this, MainActivity.class));
+                startActivity( new Intent(CreatePhotoBookActivity.this, DraggableGridExampleActivity.class));
             }
         });
 

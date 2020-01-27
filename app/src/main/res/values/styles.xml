@@ -142,5 +142,21 @@
         <item name="android:progress">50</item>
         <item name="android:minHeight">12.0dip</item>
     </style>
+
+    <style name="commonListItemStyle">
+    </style>
+
+    <style name="myRecyclerViewStyle">
+        <!-- NOTE: clipChildren should be false on API level 11 or later -->
+        <item name="android:clipChildren">false</item>
+        <item name="android:clipToPadding">false</item>
+        <item name="android:paddingBottom">16dp</item>
+        <item name="android:paddingLeft">16dp</item>
+        <item name="android:paddingRight">16dp</item>
+        <item name="android:paddingTop">16dp</item>
+        <item name="android:scrollbarStyle">outsideOverlay</item>
+        <item name="android:scrollbars">vertical</item>
+    </style>
+
     <declare-styleable name="AppCompatTheme_windowActionBarOverlay"></declare-styleable>
 </resources>

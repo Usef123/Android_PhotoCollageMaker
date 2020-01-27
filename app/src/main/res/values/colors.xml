@@ -17,4 +17,11 @@
     <color name="white">#ffffffff</color>
     <color name="yellow">#f2c748</color>
 
+    <color name="header_color">#1ea0d7</color>
+
+    <!-- grid list -->
+    <color name="bg_item_normal_state">#fff0f0f0</color>
+    <color name="bg_item_dragging_state">#ffffdddd</color>
+    <color name="bg_item_dragging_active_state">#ffff9999</color>
+
 </resources>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:n1="http://schemas.android.com/apk/res/android"
+    n1:id="@+id/header"
+    n1:layout_width="fill_parent"
+    n1:layout_height="56dp"
+    n1:background="#ff1ea0d7"
+    n1:orientation="horizontal">
+
+    <ImageView
+        n1:id="@+id/imageBack"
+        n1:layout_width="@dimen/_40sdp"
+        n1:layout_height="@dimen/_40sdp"
+        n1:layout_gravity="center_vertical"
+        n1:clickable="true"
+        n1:padding="@dimen/_8sdp"
+        n1:src="@drawable/ic_left_arrow_back" />
+
+    <TextView
+        n1:id="@+id/textView_header"
+        n1:layout_width="wrap_content"
+        n1:layout_height="wrap_content"
+        n1:layout_gravity="center_vertical"
+        n1:clickable="true"
+        style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+        n1:gravity="center"
+        n1:text="@string/gallery_select_an_album"
+        n1:textColor="#ffffffff"
+        n1:textStyle="bold" />
+</LinearLayout>
+
+
