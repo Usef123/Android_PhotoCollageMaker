@@ -288,7 +288,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
     }
 
     private void startShaderActivity() {
-        Log.e("MainActivity.startShade", this.imageLoader.selectedImagePath);
+        Log.e("PhotoBookListActivity.startShade", this.imageLoader.selectedImagePath);
         int maxSize = Utility.maxSizeForDimension(this, 1, 1500.0f);
         Intent shaderIntent = new Intent(getApplicationContext(), MirrorNewActivity.class);
         shaderIntent.putExtra("selectedImagePath", this.imageLoader.selectedImagePath);
@@ -509,7 +509,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
             }
         }
 //        if (this.mRateLayout == v) {
-//            if (Glob.isOnline(MainActivity.this)) {
+//            if (Glob.isOnline(PhotoBookListActivity.this)) {
 //                try {
 //                    Uri marketUri = Uri.parse("https://play.google.com/store/apps/details?id=" + getPackageName());
 //                    Intent marketIntent = new Intent(Intent.ACTION_VIEW, marketUri);
@@ -525,8 +525,8 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
 //            }
 //        }
 //        if (this.mMoreappsLayout == v) {
-//            if (!Glob.isOnline(MainActivity.this)) {
-//                Toast.makeText(MainActivity.this, "No Internet Connection..", 0).show();
+//            if (!Glob.isOnline(PhotoBookListActivity.this)) {
+//                Toast.makeText(PhotoBookListActivity.this, "No Internet Connection..", 0).show();
 //                return;
 //            }
 //            try {
@@ -542,8 +542,8 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
 //            startActivity(Intent.createChooser(shareIntent, "Share App"));
 //        }
 //        if (mPrivacyLayout == v) {
-//            if (!Glob.isOnline(MainActivity.this)) {
-//                Toast.makeText(MainActivity.this, "No Internet Connection..", 0).show();
+//            if (!Glob.isOnline(PhotoBookListActivity.this)) {
+//                Toast.makeText(PhotoBookListActivity.this, "No Internet Connection..", 0).show();
 //                return;
 //            }
 //            startActivity(new Intent(getApplicationContext(), PrivacyPolicyActivity.class));

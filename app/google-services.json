@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "806858762309",
+    "firebase_url": "https://photobookmaker-1084f.firebaseio.com",
+    "project_id": "photobookmaker-1084f",
+    "storage_bucket": "photobookmaker-1084f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:806858762309:android:4c6221157d5dd87a031b2c",
+        "android_client_info": {
+          "package_name": "com.greendream.photocollagemaker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "806858762309-ot2t9o6nj41vtifd7416ij884vm6iid9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCsxFu035ppvyR7KgW2CUSzBIytrPil2RI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "806858762309-ot2t9o6nj41vtifd7416ij884vm6iid9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

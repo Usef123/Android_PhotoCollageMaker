@@ -45,6 +45,10 @@
         </activity>
 
         <activity
+            android:name=".photobooklist.PhotoBookListActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity
             android:name=".activities.CreatePhotoBookActivity"
             android:screenOrientation="portrait"/>
 

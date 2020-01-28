@@ -14,10 +14,16 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.greendream.photocollagemaker.Glob;
 import com.greendream.photocollagemaker.R;
+import com.greendream.photocollagemaker.photobooklist.PhotoBook;
 import com.greendream.photocollagemaker.photogrid.DraggableGridExampleActivity;
 import com.tiper.MaterialSpinner;
 
@@ -37,6 +43,7 @@ public class CreatePhotoBookActivity extends AppCompatActivity {
     List<String> bookPages      = new LinkedList<>(Arrays.asList("16 Pages", "24 Pages", "32 Pages"));
 
     int nFormat = 0, nBinding = 0, nPages = 0;
+    String sPrice = "";
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -121,6 +128,14 @@ public class CreatePhotoBookActivity extends AppCompatActivity {
         btnCreate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
+                DatabaseReference databaseCart = FirebaseDatabase.getInstance().getReference(Glob.DATABASE_CART);
+
+                String id = databaseCart.push().getKey();
+                PhotoBook item = new PhotoBook(id, bookFormat.get(nFormat), bookBinding.get(nBinding), bookPages.get(nPages), sPrice);
+                databaseCart.child(id).setValue(item);
+
                 startActivity( new Intent(CreatePhotoBookActivity.this, DraggableGridExampleActivity.class));
             }
         });
@@ -133,8 +148,10 @@ public class CreatePhotoBookActivity extends AppCompatActivity {
     private void updatePrice() {
         int price = (nFormat+1) * 2 + (nBinding+1) * 3 + (nPages+1) * 5;
 
+        sPrice = "$ " + price;
+
         TextView tvPrice = (TextView) findViewById(R.id.txt_price);
-        tvPrice.setText("$ " + price);
+        tvPrice.setText(sPrice);
     }
 
 }

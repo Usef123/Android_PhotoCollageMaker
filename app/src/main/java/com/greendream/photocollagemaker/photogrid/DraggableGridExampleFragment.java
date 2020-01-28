@@ -170,7 +170,7 @@ public class DraggableGridExampleFragment extends Fragment {
         mRecyclerViewDragDropManager.setItemMoveMode(mode);
         mAdapter.setItemMoveMode(mode);
 
-        Snackbar.make(getView(), "Item move mode: " + (swapMode ? "SWAP" : "DEFAULT"), Snackbar.LENGTH_SHORT).show();
+        Snackbar.make(getView(), "PhotoBook move mode: " + (swapMode ? "SWAP" : "DEFAULT"), Snackbar.LENGTH_SHORT).show();
     }
 
     private boolean supportsViewElevation() {

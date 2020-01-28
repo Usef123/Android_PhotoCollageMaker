@@ -38,7 +38,7 @@ public class MyCreationActivity extends AppCompatActivity {
             MyCreationActivity.super.onBackPressed();
             finish();
 //            showInterstitial();
-//            MyCreationActivity.this.startActivity(new Intent(MyCreationActivity.this, MainActivity.class));
+//            MyCreationActivity.this.startActivity(new Intent(MyCreationActivity.this, PhotoBookListActivity.class));
 //            MyCreationActivity.this.finish();
         }
     }
