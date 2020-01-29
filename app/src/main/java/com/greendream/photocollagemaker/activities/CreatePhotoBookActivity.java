@@ -18,6 +18,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -40,10 +41,11 @@ public class CreatePhotoBookActivity extends AppCompatActivity {
 
     List<String> bookFormat     = new LinkedList<>(Arrays.asList("A5 (148 * 210 mm)", "A4 (210 * 297 mm)", "Square (200 * 200 mm)"));
     List<String> bookBinding    = new LinkedList<>(Arrays.asList("Soft Cover", "Hard Cover"));
-    List<String> bookPages      = new LinkedList<>(Arrays.asList("16 Pages", "24 Pages", "32 Pages"));
+    int[] bookPages             = {16, 24, 32};
+
 
     int nFormat = 0, nBinding = 0, nPages = 0;
-    String sPrice = "";
+    double price = 0.0;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -113,7 +115,8 @@ public class CreatePhotoBookActivity extends AppCompatActivity {
 
 
         MaterialSpinner spinPages = (MaterialSpinner ) findViewById(R.id.spinner_pages);
-        itemsAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, bookPages);
+        String[] sPages = Arrays.toString(bookPages).split("[\\[\\]]")[1].split(", ");
+        itemsAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, Arrays.<String>asList(sPages));
         spinPages.setAdapter(itemsAdapter);
         spinPages.setOnItemClickListener(new MaterialSpinner.OnItemClickListener() {
             @Override
@@ -132,11 +135,22 @@ public class CreatePhotoBookActivity extends AppCompatActivity {
 
                 DatabaseReference databaseCart = FirebaseDatabase.getInstance().getReference(Glob.DATABASE_CART);
 
-                String id = databaseCart.push().getKey();
-                PhotoBook item = new PhotoBook(id, bookFormat.get(nFormat), bookBinding.get(nBinding), bookPages.get(nPages), sPrice);
-                databaseCart.child(id).setValue(item);
+                final String id = databaseCart.push().getKey();
+                PhotoBook item = new PhotoBook(id, bookFormat.get(nFormat), bookBinding.get(nBinding), bookPages[nPages], price);
+                databaseCart.child(id).setValue(item).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
 
-                startActivity( new Intent(CreatePhotoBookActivity.this, DraggableGridExampleActivity.class));
+                        Intent intent = new Intent(CreatePhotoBookActivity.this, DraggableGridExampleActivity.class);
+                        intent.putExtra("id", id);
+                        CreatePhotoBookActivity.this.startActivity( intent );
+
+                    }
+                });
+
+
+
+
             }
         });
 
@@ -146,12 +160,10 @@ public class CreatePhotoBookActivity extends AppCompatActivity {
     }
 
     private void updatePrice() {
-        int price = (nFormat+1) * 2 + (nBinding+1) * 3 + (nPages+1) * 5;
-
-        sPrice = "$ " + price;
+        price = (nFormat+1) * 2 + (nBinding+1) * 3 + (nPages+1) * 5;
 
         TextView tvPrice = (TextView) findViewById(R.id.txt_price);
-        tvPrice.setText(sPrice);
+        tvPrice.setText("$ " + price);
     }
 
 }

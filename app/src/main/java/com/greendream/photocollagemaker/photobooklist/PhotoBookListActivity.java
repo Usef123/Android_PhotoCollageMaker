@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
@@ -28,6 +29,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.greendream.photocollagemaker.Glob;
 import com.greendream.photocollagemaker.R;
 import com.greendream.photocollagemaker.activities.CreatePhotoBookActivity;
+import com.greendream.photocollagemaker.photogrid.DraggableGridExampleActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,6 +37,9 @@ import java.util.List;
 public class PhotoBookListActivity extends AppCompatActivity implements RecyclerItemTouchHelper.RecyclerItemTouchHelperListener {
 
     private static final String TAG = PhotoBookListActivity.class.getSimpleName();
+
+    private SwipeRefreshLayout swipeContainer;
+
     private RecyclerView recyclerView;
     private List<PhotoBook> cartList;
     private CartListAdapter mAdapter;
@@ -47,6 +52,28 @@ public class PhotoBookListActivity extends AppCompatActivity implements Recycler
         setContentView(R.layout.activity_photobook_list);
 
         containView = findViewById(R.id.container);
+
+        swipeContainer = (SwipeRefreshLayout) findViewById(R.id.swipeContainer);
+        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                // Your code to refresh the list here.
+                // Make sure you call swipeContainer.setRefreshing(false)
+                // once the network request has completed successfully.
+                prepareCart(new CallBackListener() {
+                    @Override
+                    public void onCallbackDone() {
+                        swipeContainer.setRefreshing(false);
+                    }
+                });
+            }
+        });
+        // Configure the refreshing colors
+        swipeContainer.setColorSchemeResources(android.R.color.holo_blue_bright,
+                android.R.color.holo_green_light,
+                android.R.color.holo_orange_light,
+                android.R.color.holo_red_light);
+
         recyclerView = findViewById(R.id.recycler_view);
 
         cartList = new ArrayList<>();
@@ -67,7 +94,7 @@ public class PhotoBookListActivity extends AppCompatActivity implements Recycler
 
 
         // making http call and fetching menu json
-        prepareCart();
+        prepareCart(null);
 
         ItemTouchHelper.SimpleCallback itemTouchHelperCallback1 = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT | ItemTouchHelper.UP) {
             @Override
@@ -100,15 +127,25 @@ public class PhotoBookListActivity extends AppCompatActivity implements Recycler
                 startActivity(new Intent(PhotoBookListActivity.this, CreatePhotoBookActivity.class));
             }
         });
+
+        mAdapter.setMyViewHolderClickListener(new CartListAdapter.MyViewHolderClickListener() {
+            @Override
+            public void onItemViewClick(int position) {
+                PhotoBook item = cartList.get(position);
+
+                Intent intent = new Intent(PhotoBookListActivity.this, DraggableGridExampleActivity.class);
+                intent.putExtra("id", item.getId());
+                startActivity(intent);
+            }
+        });
     }
 
     /**
      * method make volley network call and parses json
      */
-    private void prepareCart() {
+    private void prepareCart(final CallBackListener listener) {
 
         DatabaseReference databaseCart = FirebaseDatabase.getInstance().getReference(Glob.DATABASE_CART);
-
 
         databaseCart.addValueEventListener(new ValueEventListener() {
             @Override
@@ -128,6 +165,10 @@ public class PhotoBookListActivity extends AppCompatActivity implements Recycler
 
                 // refreshing recycler view
                 mAdapter.notifyDataSetChanged();
+
+                if (listener != null) {
+                    listener.onCallbackDone();
+                }
             }
 
             @Override
@@ -159,6 +200,10 @@ public class PhotoBookListActivity extends AppCompatActivity implements Recycler
             mAdapter.removeItem(viewHolder.getAdapterPosition());
 
 
+            DatabaseReference databaseCart = FirebaseDatabase.getInstance().getReference(Glob.DATABASE_CART).child(deletedItem.getId());
+            databaseCart.removeValue();
+
+
             // showing snack bar with Undo option
             Snackbar snackbar = Snackbar.make(containView, name + " removed from cart!", Snackbar.LENGTH_LONG);
             snackbar.setAction("UNDO", new View.OnClickListener() {
@@ -166,7 +211,13 @@ public class PhotoBookListActivity extends AppCompatActivity implements Recycler
                 public void onClick(View view) {
 
                     // undo is selected, restore the deleted item
+
                     mAdapter.restoreItem(deletedItem, deletedIndex);
+
+                    DatabaseReference databaseCart = FirebaseDatabase.getInstance().getReference(Glob.DATABASE_CART).child(deletedItem.getId());
+                    databaseCart.setValue(deletedItem);
+
+
                 }
             });
             snackbar.setActionTextColor(Color.YELLOW);
@@ -174,4 +225,13 @@ public class PhotoBookListActivity extends AppCompatActivity implements Recycler
         }
     }
 
+
+    CallBackListener callBackListener;
+    public static interface CallBackListener{
+        void onCallbackDone();
+    }
+
+    public void setCallBackListner(CallBackListener listener){
+        this.callBackListener = listener;
+    }
 }

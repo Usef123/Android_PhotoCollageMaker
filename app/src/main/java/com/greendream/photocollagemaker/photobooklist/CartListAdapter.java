@@ -24,8 +24,18 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.MyView
     private Context context;
     private List<PhotoBook> cartList;
 
+    public static interface MyViewHolderClickListener{
+
+        public void onItemViewClick(int position);
+
+    }
+
+    public void setMyViewHolderClickListener(MyViewHolderClickListener listener){
+        this.myViewHolderClickListener = listener;
+    }
+
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView name, description, price;
+        public TextView name, description, pages, price;
         public ImageView thumbnail;
         public RelativeLayout viewBackground, viewForeground;
 
@@ -33,6 +43,7 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.MyView
             super(view);
             name = view.findViewById(R.id.format);
             description = view.findViewById(R.id.binding);
+            pages = view.findViewById(R.id.pages);
             price = view.findViewById(R.id.price);
             thumbnail = view.findViewById(R.id.thumbnail);
 
@@ -55,16 +66,29 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.MyView
         return new MyViewHolder(itemView);
     }
 
+    MyViewHolderClickListener myViewHolderClickListener;
+
     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) {
         final PhotoBook item = cartList.get(position);
         holder.name.setText(item.getFormat());
         holder.description.setText(item.getBinding());
-        holder.price.setText("$ " + item.getPrice());
+        holder.pages.setText("" + item.getPages());
+        holder.price.setText( "$ " + item.getPrice());
 
         Glide.with(context)
                 .load(item.getThumbnail())
                 .into(holder.thumbnail);
+
+
+        holder.viewForeground.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (myViewHolderClickListener != null) {
+                    myViewHolderClickListener.onItemViewClick(position);
+                }
+            }
+        });
     }
 
     @Override
@@ -85,4 +109,8 @@ public class CartListAdapter extends RecyclerView.Adapter<CartListAdapter.MyView
         // notify item added by position
         notifyItemInserted(position);
     }
+
+
+
 }
+

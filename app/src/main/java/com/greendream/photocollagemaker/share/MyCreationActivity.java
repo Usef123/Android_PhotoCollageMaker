@@ -11,6 +11,7 @@ import android.widget.RelativeLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.greendream.photocollagemaker.Glob;
 import com.greendream.photocollagemaker.R;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest.Builder;

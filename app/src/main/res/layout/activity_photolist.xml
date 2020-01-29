@@ -34,13 +34,13 @@
             n1:textStyle="bold"/>
 
         <Button
-            n1:id="@+id/btnPreview"
+            n1:id="@+id/btnSave"
             n1:layout_width="wrap_content"
             n1:layout_height="wrap_content"
             n1:layout_gravity="center_vertical|right"
             n1:padding="@dimen/_8sdp"
             n1:textColor="@color/white"
-            n1:text="Preview"
+            n1:text="Save"
             n1:background="#00000000" />
 
     </FrameLayout>

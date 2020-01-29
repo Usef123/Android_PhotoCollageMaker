@@ -16,8 +16,6 @@
 
 package com.greendream.photocollagemaker.photogrid.common.data;
 
-import com.h6ah4i.android.widget.advrecyclerview.swipeable.RecyclerViewSwipeManager;
-
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
@@ -122,14 +120,14 @@ public class ExampleDataProvider extends AbstractDataProvider {
 
         private final long mId;
         @NonNull
-        private final String mText;
+        private final String mImgUrl;
         private final int mViewType;
         private boolean mPinned;
 
-        public ConcreteData(long id, int viewType, @NonNull String text, int swipeReaction) {
+        public ConcreteData(long id, int viewType, @NonNull String imgUrl, int swipeReaction) {
             mId = id;
             mViewType = viewType;
-            mText = makeText(id, text, swipeReaction);
+            mImgUrl = imgUrl; //makeText(id, imgUrl, swipeReaction);
         }
 
         private static String makeText(long id, String text, int swipeReaction) {
@@ -154,12 +152,12 @@ public class ExampleDataProvider extends AbstractDataProvider {
         @NonNull
         @Override
         public String toString() {
-            return mText;
+            return mImgUrl;
         }
 
         @Override
         public String getText() {
-            return mText;
+            return mImgUrl;
         }
 
         @Override

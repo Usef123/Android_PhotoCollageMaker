@@ -54,12 +54,12 @@
 
         <activity
             android:name=".photogrid.DraggableGridExampleActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:launchMode="singleTask"/>
 
         <activity
             android:name=".activities.MainActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme_NoActionBar" />
+            android:screenOrientation="portrait"/>
 
         <activity
             android:name=".collagelib.CollageActivity"

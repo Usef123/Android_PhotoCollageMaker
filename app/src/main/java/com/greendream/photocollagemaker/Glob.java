@@ -8,8 +8,12 @@ import static android.content.Context.CONNECTIVITY_SERVICE;
 
 public class Glob {
 
+    public static String app_name = "PhotoCollageMaker";
+
     public static String DATABASE_CART = "cart";
-    public static String DATABASE_PHOTOBOOK = "photobook";
+
+    public static String gCurPhotoBookID = "";
+    public static int    gCurPhotoIndex = 0;
 
 
     public static String acc_link = "https://play.google.com/store/apps/developer?id=ABCD";  //REPLACE ABCD with Developer Console name

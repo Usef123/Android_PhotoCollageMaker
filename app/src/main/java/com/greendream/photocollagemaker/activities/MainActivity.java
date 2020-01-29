@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
     Toolbar toolbar;
 
     protected void onCreate(Bundle savedInstanceState) {
-        requestWindowFeature(1);
+//        requestWindowFeature(1);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -120,7 +120,8 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
 //        this.mDrawerLayout.setDrawerListener(this.mDrawerToggle);
 //        setupDrawerToggle();
 
-        getWindow().addFlags(1024);
+        //getWindow().addFlags(1024);
+
         findViewbyIds();
         this.imageLoader = new ImageLoader(this);
         this.imageLoader.setListener(new ImageLoaded() {
@@ -171,9 +172,9 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
 
 
     void setupToolbar() {
-        this.toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(this.toolbar);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
+//        this.toolbar = (Toolbar) findViewById(R.id.toolbar);
+//        setSupportActionBar(this.toolbar);
+//        getSupportActionBar().setDisplayShowHomeEnabled(true);
     }
 
     private class DrawerItemClickListener implements AdapterView.OnItemClickListener {

@@ -282,7 +282,10 @@ public class MirrorNewActivity extends AppCompatActivity {
             }
             String resultPath = null;
             if (saveToFile) {
-                resultPath = new StringBuilder(String.valueOf(Environment.getExternalStorageDirectory().toString())).append("/").append(getString(R.string.app_name)).append("/").append(String.valueOf(System.currentTimeMillis())).append(".jpg").toString();
+                resultPath = new StringBuilder(String.valueOf(Environment.getExternalStorageDirectory().toString())).append("/")
+                        .append(getString(R.string.app_name)).append("/")
+                        .append(Glob.gCurPhotoBookID).append("/")
+                        .append(String.valueOf(System.currentTimeMillis())).append(".jpg").toString();
                 new File(resultPath).getParentFile().mkdirs();
                 try {
                     FileOutputStream out = new FileOutputStream(resultPath);

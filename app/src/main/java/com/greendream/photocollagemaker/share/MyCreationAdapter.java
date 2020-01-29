@@ -22,6 +22,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.greendream.photocollagemaker.Glob;
 import com.greendream.photocollagemaker.R;
 import com.bumptech.glide.request.RequestOptions;
 

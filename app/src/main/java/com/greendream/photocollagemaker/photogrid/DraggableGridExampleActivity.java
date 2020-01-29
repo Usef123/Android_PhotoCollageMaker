@@ -16,23 +16,36 @@
 
 package com.greendream.photocollagemaker.photogrid;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.greendream.photocollagemaker.Glob;
 import com.greendream.photocollagemaker.R;
+import com.greendream.photocollagemaker.activities.MainActivity;
+import com.greendream.photocollagemaker.photobooklist.PhotoBook;
 import com.greendream.photocollagemaker.photogrid.common.data.AbstractDataProvider;
 import com.greendream.photocollagemaker.photogrid.common.data.ExampleDataProvider;
 import com.greendream.photocollagemaker.photogrid.common.fragment.ExampleDataProviderFragment;
 import com.h6ah4i.android.widget.advrecyclerview.swipeable.RecyclerViewSwipeManager;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 public class DraggableGridExampleActivity extends AppCompatActivity {
     private static final String FRAGMENT_TAG_DATA_PROVIDER = "data provider";
@@ -57,15 +70,23 @@ public class DraggableGridExampleActivity extends AppCompatActivity {
             }
         });
 
-        Button btnPreview = findViewById(R.id.btnPreview);
-        btnPreview.setOnClickListener(new View.OnClickListener() {
+        Button btnSave = findViewById(R.id.btnSave);
+        btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
+                List<String> images = new LinkedList<>();
+
                 List<ExampleDataProvider.ConcreteData> mData = ((ExampleDataProvider)(getDataProvider())).getDataProvider();
                 for (ExampleDataProvider.ConcreteData data : mData) {
-                    Log.e("iGold", data.getText());
+                    images.add(data.getText());
                 }
+
+                final DatabaseReference databaseCart = FirebaseDatabase.getInstance().getReference(Glob.DATABASE_CART).child(Glob.gCurPhotoBookID).child("images");
+                databaseCart.setValue(images);
+
+
+                Snackbar.make(getWindow().getDecorView().getRootView(), "Saved successfully", Snackbar.LENGTH_LONG).show();
             }
         });
 
@@ -84,7 +105,6 @@ public class DraggableGridExampleActivity extends AppCompatActivity {
         }
 
 
-
     }
 
     public AbstractDataProvider getDataProvider() {
@@ -96,28 +116,42 @@ public class DraggableGridExampleActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
+        String mPhotoBookID = getIntent().getStringExtra("id");
+        Glob.gCurPhotoBookID = mPhotoBookID;
 
-        final String atoz = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        DatabaseReference databaseCart = FirebaseDatabase.getInstance().getReference(Glob.DATABASE_CART).child(mPhotoBookID);
 
-        List<ExampleDataProvider.ConcreteData> mData;
-        mData = new LinkedList<>();
+        databaseCart.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
 
-        for (int i = 0; i < 2; i++) {
-            for (int j = 0; j < atoz.length(); j++) {
-                final long id = mData.size();
-                final int viewType = 0;
-                final String text = Character.toString(atoz.charAt(j));
-                final int swipeReaction = RecyclerViewSwipeManager.REACTION_CAN_SWIPE_UP | RecyclerViewSwipeManager.REACTION_CAN_SWIPE_DOWN;
-                mData.add(new ExampleDataProvider.ConcreteData(id, viewType, text, swipeReaction));
+                PhotoBook item = dataSnapshot.getValue(PhotoBook.class);
+
+                if (item != null) {
+                    List<ExampleDataProvider.ConcreteData> mData = new LinkedList<>();
+
+                    for (String url : item.getImages()) {
+                        final int id = 0;
+                        final int viewType = 0;
+                        final String text = url;
+                        final int swipeReaction = RecyclerViewSwipeManager.REACTION_CAN_SWIPE_UP | RecyclerViewSwipeManager.REACTION_CAN_SWIPE_DOWN;
+                        mData.add(new ExampleDataProvider.ConcreteData(id, viewType, text, swipeReaction));
+                    }
+
+                    ((ExampleDataProvider) (mExampleDataProviderFragment.getDataProvider())).setDataProvider(mData);
+
+                    if (mDraggableGridExampleFragment != null) {
+                        mDraggableGridExampleFragment.onRefresh();
+                    }
+                }
             }
-        }
 
-        ((ExampleDataProvider) (mExampleDataProviderFragment.getDataProvider())).setDataProvider(mData);
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
+            }
+        });
 
-        if (mDraggableGridExampleFragment != null) {
-            mDraggableGridExampleFragment.onRefresh();
-        }
 
     }
 

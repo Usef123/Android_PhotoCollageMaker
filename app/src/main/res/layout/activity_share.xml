@@ -6,7 +6,7 @@
     android:background="@color/white"
     android:orientation="vertical">
 
-    <RelativeLayout
+    <FrameLayout
         android:id="@+id/top"
         android:layout_width="fill_parent"
         android:layout_height="56dp"
@@ -28,13 +28,21 @@
             style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_toRightOf="@+id/back"
             android:gravity="center"
             android:text="Share Creation"
             android:textColor="@color/white"
             android:textStyle="bold" />
 
-    </RelativeLayout>
+        <Button
+            android:id="@+id/btnSave"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|right"
+            android:padding="@dimen/_8sdp"
+            android:textColor="@color/white"
+            android:text="Done"
+            android:background="#00000000" />
+    </FrameLayout>
 
 
     <LinearLayout

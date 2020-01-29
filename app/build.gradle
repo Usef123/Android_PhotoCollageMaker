@@ -49,6 +49,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-firestore:21.3.1'
     implementation 'com.google.firebase:firebase-database:19.2.0'
 
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0'
 }
 
 

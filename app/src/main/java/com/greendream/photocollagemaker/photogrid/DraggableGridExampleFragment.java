@@ -16,6 +16,7 @@
 
 package com.greendream.photocollagemaker.photogrid;
 
+import android.content.Intent;
 import android.graphics.drawable.NinePatchDrawable;
 import android.os.Build;
 import android.os.Bundle;
@@ -27,7 +28,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CompoundButton;
 
+import com.greendream.photocollagemaker.Glob;
 import com.greendream.photocollagemaker.R;
+import com.greendream.photocollagemaker.activities.MainActivity;
 import com.greendream.photocollagemaker.photogrid.common.data.AbstractDataProvider;
 
 import com.google.android.material.snackbar.Snackbar;
@@ -48,7 +51,7 @@ import androidx.recyclerview.widget.RecyclerView;
 public class DraggableGridExampleFragment extends Fragment {
     private RecyclerView mRecyclerView;
     private RecyclerView.LayoutManager mLayoutManager;
-    private DraggableGridExampleAdapter mAdapter;
+    public  DraggableGridExampleAdapter mAdapter;
     private RecyclerView.Adapter mWrappedAdapter;
     private RecyclerViewDragDropManager mRecyclerViewDragDropManager;
 
@@ -90,8 +93,9 @@ public class DraggableGridExampleFragment extends Fragment {
         mRecyclerViewDragDropManager.setDraggingItemScale(1.3f);
         mRecyclerViewDragDropManager.setDraggingItemRotation(15.0f);
 
+
         //adapter
-        final DraggableGridExampleAdapter myItemAdapter = new DraggableGridExampleAdapter(getDataProvider());
+        final DraggableGridExampleAdapter myItemAdapter = new DraggableGridExampleAdapter(getActivity(), getDataProvider());
         mAdapter = myItemAdapter;
 
         mWrappedAdapter = mRecyclerViewDragDropManager.createWrappedAdapter(myItemAdapter);      // wrap for dragging
@@ -115,6 +119,17 @@ public class DraggableGridExampleFragment extends Fragment {
         // for debugging
 //        animator.setDebug(true);
 //        animator.setMoveDuration(2000);
+
+
+        mAdapter.setMyViewHolderClickListener(new DraggableGridExampleAdapter.MyViewHolderClickListener() {
+            @Override
+            public void onItemViewClick(int position) {
+
+                Glob.gCurPhotoIndex = position;
+
+                getActivity().startActivity(new Intent(getActivity(), MainActivity.class));
+            }
+        });
     }
 
     public void onRefresh() {

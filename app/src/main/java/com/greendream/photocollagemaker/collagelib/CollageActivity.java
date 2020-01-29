@@ -730,8 +730,11 @@ public class CollageActivity extends FragmentActivity {
             bitmapCanvas.restoreToCount(q);
 
 //            String resultPath = String.valueOf(Environment.getExternalStorageDirectory().toString()) + CollageActivity.this.getString(R.string.directory) + String.valueOf(System.currentTimeMillis()) + ".jpg";
-            String resultPath = String.valueOf(Environment.getExternalStorageDirectory().toString()) + "/" + getString(R.string.app_name) + "/" + String.valueOf(System.currentTimeMillis()) + ".jpg";
-
+//            String resultPath = String.valueOf(Environment.getExternalStorageDirectory().toString()) + "/" + getString(R.string.app_name) + "/" + String.valueOf(System.currentTimeMillis()) + ".jpg";
+            String resultPath = new StringBuilder(String.valueOf(Environment.getExternalStorageDirectory().toString())).append("/")
+                    .append(getString(R.string.app_name)).append("/")
+                    .append(Glob.gCurPhotoBookID).append("/")
+                    .append(String.valueOf(System.currentTimeMillis())).append(".jpg").toString();
 //            boolean bRet = new File(resultPath).getParentFile().mkdirs();
             File dir = new File(resultPath).getParentFile();
             if (!dir.exists() || !dir.isDirectory()) {
@@ -1964,6 +1967,8 @@ public class CollageActivity extends FragmentActivity {
             boolean result = checkPermission();
             if (result) {
                 saveImage();
+
+
             }
 
 

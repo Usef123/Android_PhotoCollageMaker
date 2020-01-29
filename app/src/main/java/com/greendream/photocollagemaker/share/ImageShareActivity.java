@@ -8,22 +8,37 @@ import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.greendream.photocollagemaker.BuildConfig;
+import com.greendream.photocollagemaker.Glob;
 import com.greendream.photocollagemaker.R;
 import com.greendream.photocollagemaker.bitmap.BitmapLoader;
 import com.google.android.gms.ads.AdRequest.Builder;
 import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
+import com.greendream.photocollagemaker.photobooklist.PhotoBook;
+import com.greendream.photocollagemaker.photogrid.DraggableGridExampleActivity;
+import com.greendream.photocollagemaker.photogrid.common.data.ExampleDataProvider;
+import com.h6ah4i.android.widget.advrecyclerview.swipeable.RecyclerViewSwipeManager;
 
 import java.io.File;
+import java.util.LinkedList;
+import java.util.List;
 
 import static androidx.core.content.FileProvider.getUriForFile;
 
@@ -81,6 +96,7 @@ public class ImageShareActivity extends AppCompatActivity implements OnClickList
         }
 
 
+
         getWindow().setFlags(1024, 1024);
         bindView();
 
@@ -96,6 +112,30 @@ public class ImageShareActivity extends AppCompatActivity implements OnClickList
 
             adview.loadAd(new Builder().build());
         }
+
+
+        // upload image path
+        final DatabaseReference databaseCart = FirebaseDatabase.getInstance().getReference(Glob.DATABASE_CART).child(Glob.gCurPhotoBookID).child("images");
+
+        databaseCart.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                List<String> images = (List<String>) dataSnapshot.getValue();
+
+                images.set(Glob.gCurPhotoIndex, imagePath);
+
+
+                databaseCart.setValue(images);
+            }
+
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
     }
 
     private void bindView() {
@@ -111,7 +151,21 @@ public class ImageShareActivity extends AppCompatActivity implements OnClickList
         this.ivShareMore.setOnClickListener(this);
 
         this.back = (ImageView) findViewById(R.id.back);
-        this.back.setOnClickListener(this);
+        this.back.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+
+        Button btnDone = findViewById(R.id.btnSave);
+        btnDone.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ImageShareActivity.this, DraggableGridExampleActivity.class));
+                finish();
+            }
+        });
     }
 
 

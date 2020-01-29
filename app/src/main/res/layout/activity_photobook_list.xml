@@ -34,18 +34,29 @@
         n1:layout_width="match_parent"
         n1:layout_height="match_parent">
 
-        <androidx.recyclerview.widget.RecyclerView
-            n1:id="@+id/recycler_view"
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            n1:id="@+id/swipeContainer"
             n1:layout_width="match_parent"
-            n1:layout_height="match_parent"
-            n1:scrollbars="vertical" />
+            n1:layout_height="match_parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                n1:id="@+id/recycler_view"
+                n1:layout_width="match_parent"
+                n1:layout_height="match_parent"
+                n1:scrollbars="vertical"
+                n1:layout_alignParentLeft="true"
+                n1:layout_alignParentTop="true"/>
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             n1:id="@+id/btn_add"
             n1:layout_width="wrap_content"
             n1:layout_height="wrap_content"
             n1:layout_gravity="end|bottom"
-            n1:src="@drawable/ic_launcher"
+            n1:src="@drawable/text_add"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            app:backgroundTint="@color/header_color"
             n1:layout_margin="16dp" />
 
     </FrameLayout>

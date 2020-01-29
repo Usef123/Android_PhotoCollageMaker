@@ -16,15 +16,22 @@
 
 package com.greendream.photocollagemaker.photogrid;
 
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.Environment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.greendream.photocollagemaker.R;
+import com.greendream.photocollagemaker.photobooklist.CartListAdapter;
 import com.greendream.photocollagemaker.photogrid.common.data.AbstractDataProvider;
 import com.greendream.photocollagemaker.photogrid.common.utils.DrawableUtils;
 import com.h6ah4i.android.widget.advrecyclerview.draggable.DraggableItemAdapter;
@@ -43,10 +50,12 @@ class DraggableGridExampleAdapter
     private int mItemMoveMode = RecyclerViewDragDropManager.ITEM_MOVE_MODE_DEFAULT;
 
     private AbstractDataProvider mProvider;
+    Context context;
 
     public static class MyViewHolder extends AbstractDraggableItemViewHolder {
         public LinearLayout mContainer;
         public View mDragHandle;
+        public ImageView mImageView;
         public TextView mTextView;
 
         public MyViewHolder(View v) {
@@ -54,7 +63,18 @@ class DraggableGridExampleAdapter
             mContainer = v.findViewById(R.id.container);
             mDragHandle = v.findViewById(R.id.drag_handle);
             mTextView = v.findViewById(android.R.id.text1);
+            mImageView = v.findViewById(R.id.imageview);
         }
+    }
+
+    public DraggableGridExampleAdapter(Context context, AbstractDataProvider dataProvider) {
+        this.context = context;
+
+        mProvider = dataProvider;
+
+        // DraggableItemAdapter requires stable ID, and also
+        // have to implement the getItemId() method appropriately.
+        setHasStableIds(true);
     }
 
     public DraggableGridExampleAdapter(AbstractDataProvider dataProvider) {
@@ -91,12 +111,24 @@ class DraggableGridExampleAdapter
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
         final AbstractDataProvider.Data item = mProvider.getItem(position);
 
         // set text
-//        holder.mTextView.setText(item.getText());
-        holder.mTextView.setText("page = " + position);
+        holder.mTextView.setText(item.getText());
+
+        // setImage
+
+        Glide.with(context)
+                .load(item.getText())
+                .into(holder.mImageView);
+
+
+        String text = "";
+        if (position == 0) text = "Front Cover";
+        else if (position == 1) text = "Back Cover";
+        else    text = (position-1) + " page";
+        holder.mTextView.setText(text);
 
         // set background resource (target view ID: container)
         final DraggableItemState dragState = holder.getDragState();
@@ -117,6 +149,16 @@ class DraggableGridExampleAdapter
 
             holder.mContainer.setBackgroundResource(bgResId);
         }
+
+
+        holder.setIsRecyclable(false);
+
+        holder.mContainer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myViewHolderClickListener.onItemViewClick(position);
+            }
+        });
     }
 
     @Override
@@ -159,5 +201,15 @@ class DraggableGridExampleAdapter
     @Override
     public void onItemDragFinished(int fromPosition, int toPosition, boolean result) {
         notifyDataSetChanged();
+    }
+
+
+    public static interface MyViewHolderClickListener{
+        public void onItemViewClick(int position);
+    }
+
+    MyViewHolderClickListener myViewHolderClickListener;
+    public void setMyViewHolderClickListener(MyViewHolderClickListener listener){
+        this.myViewHolderClickListener = listener;
     }
 }
