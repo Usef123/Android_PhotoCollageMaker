@@ -20,10 +20,10 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="150dp"
-    android:layout_margin="4dp">
+    android:layout_height="250dp"
+    android:layout_margin="5dp">
 
-    <LinearLayout
+    <FrameLayout
         android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -35,19 +35,25 @@
         <ImageView
             android:id="@+id/imageview"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:src="@drawable/bg_collage"/>
+            android:layout_height="match_parent"
+            android:src="@drawable/bg_collage"
+            android:scaleType="fitXY"/>
 
         <TextView
             android:id="@android:id/text1"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:padding="5dp"
-            android:text="text"
-            tools:ignore="RtlHardcoded"/>
+            android:layout_margin="10dp"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:text="Cover"
+            tools:ignore="RtlHardcoded"
+            android:textColor="#FFFFFF"
+            android:background="@drawable/badge_bg"/>
 
-    </LinearLayout>
+    </FrameLayout>
 
 </FrameLayout>

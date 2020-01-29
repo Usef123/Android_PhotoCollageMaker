@@ -53,7 +53,7 @@ class DraggableGridExampleAdapter
     Context context;
 
     public static class MyViewHolder extends AbstractDraggableItemViewHolder {
-        public LinearLayout mContainer;
+        public FrameLayout mContainer;
         public View mDragHandle;
         public ImageView mImageView;
         public TextView mTextView;
@@ -127,7 +127,7 @@ class DraggableGridExampleAdapter
         String text = "";
         if (position == 0) text = "Front Cover";
         else if (position == 1) text = "Back Cover";
-        else    text = (position-1) + " page";
+        else    text = "" + (position-1) + " page" ;
         holder.mTextView.setText(text);
 
         // set background resource (target view ID: container)
