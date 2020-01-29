@@ -9,6 +9,7 @@ import android.widget.ProgressBar;
 
 import com.greendream.photocollagemaker.activities.CreatePhotoBookActivity;
 import com.greendream.photocollagemaker.activities.MainActivity;
+import com.greendream.photocollagemaker.photobooklist.PhotoBookList2Activity;
 import com.greendream.photocollagemaker.photobooklist.PhotoBookListActivity;
 
 public class SplashActivity extends Activity {
@@ -47,7 +48,7 @@ public class SplashActivity extends Activity {
                 try {
                     Thread.sleep(100);
                     //SplashActivity.this.startActivity(new Intent(SplashActivity.this.getBaseContext(), PhotoBookListActivity.class));
-                    SplashActivity.this.startActivity(new Intent(SplashActivity.this.getBaseContext(), PhotoBookListActivity.class));
+                    SplashActivity.this.startActivity(new Intent(SplashActivity.this.getBaseContext(), PhotoBookList2Activity.class));
                     SplashActivity.this.finish();
                 } catch (InterruptedException e2) {
                     e2.printStackTrace();

@@ -18,11 +18,12 @@
         n1:background="@color/primary"
         n1:orientation="vertical">
 
-        <LinearLayout
+        <FrameLayout
             n1:layout_width="match_parent"
             n1:layout_height="56dp"
             n1:weightSum="2"
-            n1:orientation="horizontal">
+            n1:orientation="horizontal"
+            n1:background="@color/header_color">
 
             <TextView
                 n1:layout_width="wrap_content"
@@ -64,20 +65,19 @@
 
             <ImageButton
                 n1:id="@+id/button_save_mirror_image"
-                n1:layout_height="match_parent"
-                n1:layout_width="0dp"
-                n1:paddingBottom="@dimen/padding_small"
-                n1:paddingTop="@dimen/padding_small"
-                n1:background="@drawable/collage_footer_button"
-                n1:layout_gravity="bottom|center"
+                n1:layout_height="50dp"
+                n1:layout_width="60dp"
+                n1:background="@color/header_color"
+                n1:layout_gravity="right|center_vertical"
+                n1:layout_marginRight="10dp"
                 n1:gravity="center"
                 n1:src="@drawable/ic_save"
                 n1:onClick="myClickHandler"
-                n1:layout_weight="0.5">
+                >
 
             </ImageButton>
 
-        </LinearLayout>
+        </FrameLayout>
 
         <LinearLayout
             n1:id="@+id/banner_container"
@@ -369,54 +369,64 @@
                         n1:text="1:1" />
 
                     <Button
-                        n1:id="@+id/button21"
+                        n1:id="@+id/buttonA5"
                         style="@style/collage_ratio_button_style"
-                        n1:text="2:1" />
+                        n1:text="A5" />
 
                     <Button
-                        n1:id="@+id/button12"
+                        n1:id="@+id/buttonA4"
                         style="@style/collage_ratio_button_style"
-                        n1:text="1:2" />
+                        n1:text="A4" />
 
-                    <Button
-                        n1:id="@+id/button32"
-                        style="@style/collage_ratio_button_style"
-                        n1:text="3:2" />
+<!--                    <Button-->
+<!--                        n1:id="@+id/button21"-->
+<!--                        style="@style/collage_ratio_button_style"-->
+<!--                        n1:text="2:1" />-->
 
-                    <Button
-                        n1:id="@+id/button23"
-                        style="@style/collage_ratio_button_style"
-                        n1:text="2:3" />
+<!--                    <Button-->
+<!--                        n1:id="@+id/button12"-->
+<!--                        style="@style/collage_ratio_button_style"-->
+<!--                        n1:text="1:2" />-->
 
-                    <Button
-                        n1:id="@+id/button43"
-                        style="@style/collage_ratio_button_style"
-                        n1:text="4:3" />
+<!--                    <Button-->
+<!--                        n1:id="@+id/button32"-->
+<!--                        style="@style/collage_ratio_button_style"-->
+<!--                        n1:text="3:2" />-->
 
-                    <Button
-                        n1:id="@+id/button34"
-                        style="@style/collage_ratio_button_style"
-                        n1:text="3:4" />
+<!--                    <Button-->
+<!--                        n1:id="@+id/button23"-->
+<!--                        style="@style/collage_ratio_button_style"-->
+<!--                        n1:text="2:3" />-->
 
-                    <Button
-                        n1:id="@+id/button45"
-                        style="@style/collage_ratio_button_style"
-                        n1:text="4:5" />
+<!--                    <Button-->
+<!--                        n1:id="@+id/button43"-->
+<!--                        style="@style/collage_ratio_button_style"-->
+<!--                        n1:text="4:3" />-->
 
-                    <Button
-                        n1:id="@+id/button57"
-                        style="@style/collage_ratio_button_style"
-                        n1:text="5:7" />
+<!--                    <Button-->
+<!--                        n1:id="@+id/button34"-->
+<!--                        style="@style/collage_ratio_button_style"-->
+<!--                        n1:text="3:4" />-->
 
-                    <Button
-                        n1:id="@+id/button169"
-                        style="@style/collage_ratio_button_style"
-                        n1:text="16:9" />
+<!--                    <Button-->
+<!--                        n1:id="@+id/button45"-->
+<!--                        style="@style/collage_ratio_button_style"-->
+<!--                        n1:text="4:5" />-->
 
-                    <Button
-                        n1:id="@+id/button916"
-                        style="@style/collage_ratio_button_style"
-                        n1:text="9:16" />
+<!--                    <Button-->
+<!--                        n1:id="@+id/button57"-->
+<!--                        style="@style/collage_ratio_button_style"-->
+<!--                        n1:text="5:7" />-->
+
+<!--                    <Button-->
+<!--                        n1:id="@+id/button169"-->
+<!--                        style="@style/collage_ratio_button_style"-->
+<!--                        n1:text="16:9" />-->
+
+<!--                    <Button-->
+<!--                        n1:id="@+id/button916"-->
+<!--                        style="@style/collage_ratio_button_style"-->
+<!--                        n1:text="9:16" />-->
                 </LinearLayout>
             </HorizontalScrollView>
         </LinearLayout>

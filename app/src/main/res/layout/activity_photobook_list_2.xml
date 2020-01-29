@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout n1:orientation="vertical"
+    n1:layout_width="fill_parent"
+    n1:layout_height="fill_parent"
+    n1:background="@color/white"
+    xmlns:n1="http://schemas.android.com/apk/res/android"
+    >
+
+    <LinearLayout
+        n1:id="@+id/header"
+        n1:layout_width="fill_parent"
+        n1:layout_height="56dp"
+        n1:background="@color/header_color"
+        n1:orientation="horizontal"
+        n1:gravity="center">
+
+
+        <TextView
+            n1:id="@+id/textView_header"
+            n1:layout_width="wrap_content"
+            n1:layout_height="wrap_content"
+            n1:layout_gravity="center"
+            n1:clickable="true"
+            style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+            n1:gravity="center"
+            n1:text="PhotoBook List"
+            n1:textColor="#ffffffff"
+            n1:textStyle="bold"/>
+
+    </LinearLayout>
+
+    <FrameLayout
+        n1:id="@+id/container"
+        n1:layout_width="match_parent"
+        n1:layout_height="match_parent">
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            n1:id="@+id/swipeContainer"
+            n1:layout_width="match_parent"
+            n1:layout_height="match_parent">
+
+            <com.baoyz.swipemenulistview.SwipeMenuListView
+                n1:id="@+id/swipemenulistview"
+                n1:layout_width="match_parent"
+                n1:layout_height="match_parent" />
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            n1:id="@+id/btn_add"
+            n1:layout_width="wrap_content"
+            n1:layout_height="wrap_content"
+            n1:layout_gravity="end|bottom"
+            n1:src="@drawable/text_add"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            app:backgroundTint="@color/header_color"
+            n1:layout_margin="16dp" />
+
+    </FrameLayout>
+
+
+</LinearLayout>
+
+

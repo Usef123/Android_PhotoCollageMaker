@@ -109,7 +109,7 @@ import java.util.List;
 public class CollageActivity extends FragmentActivity {
     private static final String TAG = "CollageView";
     private static final float UPPER_SIZE_FOR_LOAD = 1500.0f;
-    int RATIO_BUTTON_SIZE = 11;
+    int RATIO_BUTTON_SIZE = 3; //11;
     Bitmap[] bitmapList;
     Bitmap btmDelete;
     Bitmap btmScale;
@@ -674,6 +674,7 @@ public class CollageActivity extends FragmentActivity {
 
         public String saveBitmap(int width, int height) {
             int i;
+
             int btmWidth = (int) (((float) width) * CollageActivity.this.collageView.xscale);
             int btmHeight = (int) (((float) width) * CollageActivity.this.collageView.yscale);
             float btmScale = ((float) Utility.maxSizeForSave(CollageActivity.this, 2048.0f)) / ((float) Math.max(btmWidth, btmHeight));
@@ -687,6 +688,7 @@ public class CollageActivity extends FragmentActivity {
                 newBtmHeight = btmHeight;
                 Log.e(CollageActivity.TAG, "newBtmHeight");
             }
+
             Bitmap savedBitmap = Bitmap.createBitmap(newBtmWidth, newBtmHeight, Config.ARGB_8888);
             Canvas bitmapCanvas = new Canvas(savedBitmap);
             ShapeLayout arr = (ShapeLayout) this.shapeLayoutList.get(this.currentCollageIndex);
@@ -747,11 +749,18 @@ public class CollageActivity extends FragmentActivity {
                 }
             }
 
-
+//            // change size of bitmap
+//            float aspectRatio = savedBitmap.getWidth() / (float) savedBitmap.getHeight();
+//            int sizedWidth = 150;
+//            int sizedHeight = Math.round(sizedWidth / aspectRatio);
+//
+//            Bitmap sizedBmp = Bitmap.createScaledBitmap(savedBitmap, sizedWidth, sizedHeight, false);
 
             try {
                 OutputStream fileOutputStream = new FileOutputStream(resultPath);
                 savedBitmap.compress(CompressFormat.JPEG, 90, fileOutputStream);
+                //sizedBmp.compress(CompressFormat.JPEG, 90, fileOutputStream);
+
                 fileOutputStream.flush();
                 fileOutputStream.close();
             } catch (IOException e2) {
@@ -1562,8 +1571,8 @@ public class CollageActivity extends FragmentActivity {
     @SuppressLint({"WrongConstant"})
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        requestWindowFeature(1);
-        getWindow().addFlags(1024);
+        //requestWindowFeature(1);
+//        getWindow().addFlags(1024);
         Display display = getWindowManager().getDefaultDisplay();
         this.width = display.getWidth();
         this.height = display.getHeight();
@@ -1979,56 +1988,66 @@ public class CollageActivity extends FragmentActivity {
             this.mulY = 1.0f;
             this.collageView.updateShapeListForRatio(this.width, this.height);
             setRatioButtonBg(0);
-        } else if (id == R.id.button21) {
-            this.mulX = 2.0f;
-            this.mulY = 1.0f;
+        } else if (id == R.id.buttonA5) {
+            this.mulX = 148.0f;
+            this.mulY = 210.0f;
             this.collageView.updateShapeListForRatio(this.width, this.height);
             setRatioButtonBg(1);
-        } else if (id == R.id.button12) {
-            this.mulX = 1.0f;
-            this.mulY = 2.0f;
+        } else if (id == R.id.buttonA4) {
+            this.mulX = 210.0f;
+            this.mulY = 297.0f;
             this.collageView.updateShapeListForRatio(this.width, this.height);
             setRatioButtonBg(2);
-        } else if (id == R.id.button32) {
-            this.mulX = 3.0f;
-            this.mulY = 2.0f;
-            this.collageView.updateShapeListForRatio(this.width, this.height);
-            setRatioButtonBg(3);
-        } else if (id == R.id.button23) {
-            this.mulX = 2.0f;
-            this.mulY = 3.0f;
-            this.collageView.updateShapeListForRatio(this.width, this.height);
-            setRatioButtonBg(4);
-        } else if (id == R.id.button43) {
-            this.mulX = 4.0f;
-            this.mulY = 3.0f;
-            this.collageView.updateShapeListForRatio(this.width, this.height);
-            setRatioButtonBg(5);
-        } else if (id == R.id.button34) {
-            this.mulX = 3.0f;
-            this.mulY = 4.0f;
-            this.collageView.updateShapeListForRatio(this.width, this.height);
-            setRatioButtonBg(6);
-        } else if (id == R.id.button45) {
-            this.mulX = 4.0f;
-            this.mulY = 5.0f;
-            this.collageView.updateShapeListForRatio(this.width, this.height);
-            setRatioButtonBg(7);
-        } else if (id == R.id.button57) {
-            this.mulX = 5.0f;
-            this.mulY = 7.0f;
-            this.collageView.updateShapeListForRatio(this.width, this.height);
-            setRatioButtonBg(8);
-        } else if (id == R.id.button169) {
-            this.mulX = 16.0f;
-            this.mulY = 9.0f;
-            this.collageView.updateShapeListForRatio(this.width, this.height);
-            setRatioButtonBg(9);
-        } else if (id == R.id.button916) {
-            this.mulX = 9.0f;
-            this.mulY = 16.0f;
-            this.collageView.updateShapeListForRatio(this.width, this.height);
-            setRatioButtonBg(10);
+//        } else if (id == R.id.button21) {
+//            this.mulX = 2.0f;
+//            this.mulY = 1.0f;
+//            this.collageView.updateShapeListForRatio(this.width, this.height);
+//            setRatioButtonBg(1);
+//        } else if (id == R.id.button12) {
+//            this.mulX = 1.0f;
+//            this.mulY = 2.0f;
+//            this.collageView.updateShapeListForRatio(this.width, this.height);
+//            setRatioButtonBg(2);
+//        } else if (id == R.id.button32) {
+//            this.mulX = 3.0f;
+//            this.mulY = 2.0f;
+//            this.collageView.updateShapeListForRatio(this.width, this.height);
+//            setRatioButtonBg(3);
+//        } else if (id == R.id.button23) {
+//            this.mulX = 2.0f;
+//            this.mulY = 3.0f;
+//            this.collageView.updateShapeListForRatio(this.width, this.height);
+//            setRatioButtonBg(4);
+//        } else if (id == R.id.button43) {
+//            this.mulX = 4.0f;
+//            this.mulY = 3.0f;
+//            this.collageView.updateShapeListForRatio(this.width, this.height);
+//            setRatioButtonBg(5);
+//        } else if (id == R.id.button34) {
+//            this.mulX = 3.0f;
+//            this.mulY = 4.0f;
+//            this.collageView.updateShapeListForRatio(this.width, this.height);
+//            setRatioButtonBg(6);
+//        } else if (id == R.id.button45) {
+//            this.mulX = 4.0f;
+//            this.mulY = 5.0f;
+//            this.collageView.updateShapeListForRatio(this.width, this.height);
+//            setRatioButtonBg(7);
+//        } else if (id == R.id.button57) {
+//            this.mulX = 5.0f;
+//            this.mulY = 7.0f;
+//            this.collageView.updateShapeListForRatio(this.width, this.height);
+//            setRatioButtonBg(8);
+//        } else if (id == R.id.button169) {
+//            this.mulX = 16.0f;
+//            this.mulY = 9.0f;
+//            this.collageView.updateShapeListForRatio(this.width, this.height);
+//            setRatioButtonBg(9);
+//        } else if (id == R.id.button916) {
+//            this.mulX = 9.0f;
+//            this.mulY = 16.0f;
+//            this.collageView.updateShapeListForRatio(this.width, this.height);
+//            setRatioButtonBg(10);
         } else if (id == R.id.hide_select_image_warning) {
             this.selectSwapTextView.setVisibility(4);
             this.swapMode = false;
@@ -2079,16 +2098,18 @@ public class CollageActivity extends FragmentActivity {
         if (this.ratioButtonArray == null) {
             this.ratioButtonArray = new Button[this.RATIO_BUTTON_SIZE];
             this.ratioButtonArray[0] = (Button) findViewById(R.id.button11);
-            this.ratioButtonArray[1] = (Button) findViewById(R.id.button21);
-            this.ratioButtonArray[2] = (Button) findViewById(R.id.button12);
-            this.ratioButtonArray[3] = (Button) findViewById(R.id.button32);
-            this.ratioButtonArray[4] = (Button) findViewById(R.id.button23);
-            this.ratioButtonArray[5] = (Button) findViewById(R.id.button43);
-            this.ratioButtonArray[6] = (Button) findViewById(R.id.button34);
-            this.ratioButtonArray[7] = (Button) findViewById(R.id.button45);
-            this.ratioButtonArray[8] = (Button) findViewById(R.id.button57);
-            this.ratioButtonArray[9] = (Button) findViewById(R.id.button169);
-            this.ratioButtonArray[10] = (Button) findViewById(R.id.button916);
+            this.ratioButtonArray[1] = (Button) findViewById(R.id.buttonA5);
+            this.ratioButtonArray[2] = (Button) findViewById(R.id.buttonA4);
+//            this.ratioButtonArray[1] = (Button) findViewById(R.id.button21);
+//            this.ratioButtonArray[2] = (Button) findViewById(R.id.button12);
+//            this.ratioButtonArray[3] = (Button) findViewById(R.id.button32);
+//            this.ratioButtonArray[4] = (Button) findViewById(R.id.button23);
+//            this.ratioButtonArray[5] = (Button) findViewById(R.id.button43);
+//            this.ratioButtonArray[6] = (Button) findViewById(R.id.button34);
+//            this.ratioButtonArray[7] = (Button) findViewById(R.id.button45);
+//            this.ratioButtonArray[8] = (Button) findViewById(R.id.button57);
+//            this.ratioButtonArray[9] = (Button) findViewById(R.id.button169);
+//            this.ratioButtonArray[10] = (Button) findViewById(R.id.button916);
         }
         for (int i = 0; i < this.RATIO_BUTTON_SIZE; i++) {
             this.ratioButtonArray[i].setBackgroundResource(R.drawable.selector_collage_ratio_button);

@@ -90,7 +90,7 @@ public class MirrorNewActivity extends AppCompatActivity {
     private static final String TAG = "MirrorNewActivity";
     int D3_BUTTON_SIZE = 24;
     int MIRROR_BUTTON_SIZE = 15;
-    int RATIO_BUTTON_SIZE = 11;
+    int RATIO_BUTTON_SIZE = 3; //11;
     CustomRelativeLayout canvasText;
     int currentSelectedTabIndex = -1;
     ImageView[] d3ButtonArray;
@@ -248,6 +248,7 @@ public class MirrorNewActivity extends AppCompatActivity {
             if (btmHeight % MirrorNewActivity.INDEX_MIRROR_RATIO == MirrorNewActivity.INDEX_MIRROR_3D) {
                 btmHeight--;
             }
+
             Bitmap savedBitmap = Bitmap.createBitmap(btmWidth, btmHeight, Config.ARGB_8888);
             Canvas bitmapCanvas = new Canvas(savedBitmap);
             Matrix matrix = new Matrix();
@@ -280,6 +281,17 @@ public class MirrorNewActivity extends AppCompatActivity {
                 bitmapCanvas.setMatrix(matrix);
                 bitmapCanvas.drawBitmap(this.frameBitmap, null, this.mirrorModeList[this.currentModeIndex].rectTotalArea, this.framePaint);
             }
+
+
+
+//            // change size of bitmap
+//            float aspectRatio = savedBitmap.getWidth() / (float) savedBitmap.getHeight();
+//            int sizedWidth = 150;
+//            int sizedHeight = Math.round(sizedWidth / aspectRatio);
+//
+//            Bitmap sizedBmp = Bitmap.createScaledBitmap(savedBitmap, sizedWidth, sizedHeight, false);
+
+
             String resultPath = null;
             if (saveToFile) {
                 resultPath = new StringBuilder(String.valueOf(Environment.getExternalStorageDirectory().toString())).append("/")
@@ -290,6 +302,7 @@ public class MirrorNewActivity extends AppCompatActivity {
                 try {
                     FileOutputStream out = new FileOutputStream(resultPath);
                     savedBitmap.compress(CompressFormat.JPEG, 90, out);
+                    //sizedBmp.compress(CompressFormat.JPEG, 90, out);
                     out.flush();
                     out.close();
                 } catch (FileNotFoundException e) {
@@ -701,7 +714,7 @@ public class MirrorNewActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.e("MrrorNewActivity", "onCreate");
-        getWindow().addFlags(1024);
+        //getWindow().addFlags(1024);
         Bundle extras = getIntent().getExtras();
         this.sourceBitmap = Utility.getScaledBitmapFromId(this, extras.getLongArray("photo_id_list")[INDEX_MIRROR], extras.getIntArray("photo_orientation_list")[INDEX_MIRROR], -1, false);
         if (this.sourceBitmap == null) {
@@ -890,56 +903,66 @@ public class MirrorNewActivity extends AppCompatActivity {
             this.mulY = 1.0f;
             this.mirrorView.reset(this.screenWidthPixels, this.screenHeightPixels, true);
             setRatioButtonBg(INDEX_MIRROR);
-        } else if (id == R.id.button21) {
-            this.mulX = 2.0f;
-            this.mulY = 1.0f;
+        } else if (id == R.id.buttonA5) {
+            this.mulX = 148.0f;
+            this.mulY = 210.0f;
             this.mirrorView.reset(this.screenWidthPixels, this.screenHeightPixels, true);
-            setRatioButtonBg(INDEX_MIRROR_3D);
-        } else if (id == R.id.button12) {
-            this.mulX = 1.0f;
-            this.mulY = 2.0f;
+            setRatioButtonBg(1);
+        } else if (id == R.id.buttonA4) {
+            this.mulX = 210.0f;
+            this.mulY = 297.0f;
             this.mirrorView.reset(this.screenWidthPixels, this.screenHeightPixels, true);
-            setRatioButtonBg(INDEX_MIRROR_RATIO);
-        } else if (id == R.id.button32) {
-            this.mulX = 3.0f;
-            this.mulY = 2.0f;
-            this.mirrorView.reset(this.screenWidthPixels, this.screenHeightPixels, true);
-            setRatioButtonBg(INDEX_MIRROR_EFFECT);
-        } else if (id == R.id.button23) {
-            this.mulX = 2.0f;
-            this.mulY = 3.0f;
-            this.mirrorView.reset(this.screenWidthPixels, this.screenHeightPixels, true);
-            setRatioButtonBg(INDEX_MIRROR_INVISIBLE_VIEW_ACTUAL_INDEX);
-        } else if (id == R.id.button43) {
-            this.mulX = 4.0f;
-            this.mulY = 3.0f;
-            this.mirrorView.reset(this.screenWidthPixels, this.screenHeightPixels, true);
-            setRatioButtonBg(INDEX_MIRROR_ADJUSTMENT);
-        } else if (id == R.id.button34) {
-            this.mulX = 3.0f;
-            this.mulY = 4.0f;
-            this.mirrorView.reset(this.screenWidthPixels, this.screenHeightPixels, true);
-            setRatioButtonBg(TAB_SIZE);
-        } else if (id == R.id.button45) {
-            this.mulX = 4.0f;
-            this.mulY = 5.0f;
-            this.mirrorView.reset(this.screenWidthPixels, this.screenHeightPixels, true);
-            setRatioButtonBg(INDEX_MIRROR_INVISIBLE_VIEW);
-        } else if (id == R.id.button57) {
-            this.mulX = 5.0f;
-            this.mulY = 7.0f;
-            this.mirrorView.reset(this.screenWidthPixels, this.screenHeightPixels, true);
-            setRatioButtonBg(8);
-        } else if (id == R.id.button169) {
-            this.mulX = 16.0f;
-            this.mulY = 9.0f;
-            this.mirrorView.reset(this.screenWidthPixels, this.screenHeightPixels, true);
-            setRatioButtonBg(9);
-        } else if (id == R.id.button916) {
-            this.mulX = 9.0f;
-            this.mulY = 16.0f;
-            this.mirrorView.reset(this.screenWidthPixels, this.screenHeightPixels, true);
-            setRatioButtonBg(10);
+            setRatioButtonBg(2);
+//        } else if (id == R.id.button21) {
+//            this.mulX = 2.0f;
+//            this.mulY = 1.0f;
+//            this.mirrorView.reset(this.screenWidthPixels, this.screenHeightPixels, true);
+//            setRatioButtonBg(INDEX_MIRROR_3D);
+//        } else if (id == R.id.button12) {
+//            this.mulX = 1.0f;
+//            this.mulY = 2.0f;
+//            this.mirrorView.reset(this.screenWidthPixels, this.screenHeightPixels, true);
+//            setRatioButtonBg(INDEX_MIRROR_RATIO);
+//        } else if (id == R.id.button32) {
+//            this.mulX = 3.0f;
+//            this.mulY = 2.0f;
+//            this.mirrorView.reset(this.screenWidthPixels, this.screenHeightPixels, true);
+//            setRatioButtonBg(INDEX_MIRROR_EFFECT);
+//        } else if (id == R.id.button23) {
+//            this.mulX = 2.0f;
+//            this.mulY = 3.0f;
+//            this.mirrorView.reset(this.screenWidthPixels, this.screenHeightPixels, true);
+//            setRatioButtonBg(INDEX_MIRROR_INVISIBLE_VIEW_ACTUAL_INDEX);
+//        } else if (id == R.id.button43) {
+//            this.mulX = 4.0f;
+//            this.mulY = 3.0f;
+//            this.mirrorView.reset(this.screenWidthPixels, this.screenHeightPixels, true);
+//            setRatioButtonBg(INDEX_MIRROR_ADJUSTMENT);
+//        } else if (id == R.id.button34) {
+//            this.mulX = 3.0f;
+//            this.mulY = 4.0f;
+//            this.mirrorView.reset(this.screenWidthPixels, this.screenHeightPixels, true);
+//            setRatioButtonBg(TAB_SIZE);
+//        } else if (id == R.id.button45) {
+//            this.mulX = 4.0f;
+//            this.mulY = 5.0f;
+//            this.mirrorView.reset(this.screenWidthPixels, this.screenHeightPixels, true);
+//            setRatioButtonBg(INDEX_MIRROR_INVISIBLE_VIEW);
+//        } else if (id == R.id.button57) {
+//            this.mulX = 5.0f;
+//            this.mulY = 7.0f;
+//            this.mirrorView.reset(this.screenWidthPixels, this.screenHeightPixels, true);
+//            setRatioButtonBg(8);
+//        } else if (id == R.id.button169) {
+//            this.mulX = 16.0f;
+//            this.mulY = 9.0f;
+//            this.mirrorView.reset(this.screenWidthPixels, this.screenHeightPixels, true);
+//            setRatioButtonBg(9);
+//        } else if (id == R.id.button916) {
+//            this.mulX = 9.0f;
+//            this.mulY = 16.0f;
+//            this.mirrorView.reset(this.screenWidthPixels, this.screenHeightPixels, true);
+//            setRatioButtonBg(10);
         } else if (id == R.id.button_m1) {
             this.mirrorView.setCurrentMode(INDEX_MIRROR);
             this.mirrorView.d3Mode = false;
@@ -1190,17 +1213,20 @@ public class MirrorNewActivity extends AppCompatActivity {
     private void setRatioButtonBg(int index) {
         if (this.ratioButtonArray == null) {
             this.ratioButtonArray = new Button[this.RATIO_BUTTON_SIZE];
-            this.ratioButtonArray[INDEX_MIRROR] = (Button) findViewById(R.id.button11);
-            this.ratioButtonArray[INDEX_MIRROR_3D] = (Button) findViewById(R.id.button21);
-            this.ratioButtonArray[INDEX_MIRROR_RATIO] = (Button) findViewById(R.id.button12);
-            this.ratioButtonArray[INDEX_MIRROR_EFFECT] = (Button) findViewById(R.id.button32);
-            this.ratioButtonArray[INDEX_MIRROR_INVISIBLE_VIEW_ACTUAL_INDEX] = (Button) findViewById(R.id.button23);
-            this.ratioButtonArray[INDEX_MIRROR_ADJUSTMENT] = (Button) findViewById(R.id.button43);
-            this.ratioButtonArray[TAB_SIZE] = (Button) findViewById(R.id.button34);
-            this.ratioButtonArray[INDEX_MIRROR_INVISIBLE_VIEW] = (Button) findViewById(R.id.button45);
-            this.ratioButtonArray[8] = (Button) findViewById(R.id.button57);
-            this.ratioButtonArray[9] = (Button) findViewById(R.id.button169);
-            this.ratioButtonArray[10] = (Button) findViewById(R.id.button916);
+            this.ratioButtonArray[0] = (Button) findViewById(R.id.button11);
+            this.ratioButtonArray[1] = (Button) findViewById(R.id.buttonA5);
+            this.ratioButtonArray[2] = (Button) findViewById(R.id.buttonA4);
+//            this.ratioButtonArray[INDEX_MIRROR] = (Button) findViewById(R.id.button11);
+//            this.ratioButtonArray[INDEX_MIRROR_3D] = (Button) findViewById(R.id.button21);
+//            this.ratioButtonArray[INDEX_MIRROR_RATIO] = (Button) findViewById(R.id.button12);
+//            this.ratioButtonArray[INDEX_MIRROR_EFFECT] = (Button) findViewById(R.id.button32);
+//            this.ratioButtonArray[INDEX_MIRROR_INVISIBLE_VIEW_ACTUAL_INDEX] = (Button) findViewById(R.id.button23);
+//            this.ratioButtonArray[INDEX_MIRROR_ADJUSTMENT] = (Button) findViewById(R.id.button43);
+//            this.ratioButtonArray[TAB_SIZE] = (Button) findViewById(R.id.button34);
+//            this.ratioButtonArray[INDEX_MIRROR_INVISIBLE_VIEW] = (Button) findViewById(R.id.button45);
+//            this.ratioButtonArray[8] = (Button) findViewById(R.id.button57);
+//            this.ratioButtonArray[9] = (Button) findViewById(R.id.button169);
+//            this.ratioButtonArray[10] = (Button) findViewById(R.id.button916);
         }
         for (int i = INDEX_MIRROR; i < this.RATIO_BUTTON_SIZE; i += INDEX_MIRROR_3D) {
             this.ratioButtonArray[i].setBackgroundResource(R.drawable.selector_collage_ratio_button);

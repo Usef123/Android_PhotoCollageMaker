@@ -12,6 +12,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -19,6 +20,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -97,7 +99,7 @@ public class ImageShareActivity extends AppCompatActivity implements OnClickList
 
 
 
-        getWindow().setFlags(1024, 1024);
+        //getWindow().setFlags(1024, 1024);
         bindView();
 
         new BitmapWorkerTask().execute(new Void[0]);
@@ -116,25 +118,31 @@ public class ImageShareActivity extends AppCompatActivity implements OnClickList
 
         // upload image path
         final DatabaseReference databaseCart = FirebaseDatabase.getInstance().getReference(Glob.DATABASE_CART).child(Glob.gCurPhotoBookID).child("images");
-
-        databaseCart.addValueEventListener(new ValueEventListener() {
+        databaseCart.child("" + Glob.gCurPhotoIndex).setValue(imagePath).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-
-                List<String> images = (List<String>) dataSnapshot.getValue();
-
-                images.set(Glob.gCurPhotoIndex, imagePath);
-
-
-                databaseCart.setValue(images);
-            }
-
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
+            public void onSuccess(Void aVoid) {
+                Log.d("iGold", "image uploaded successfully ==========================");
             }
         });
+
+//        databaseCart.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//
+//                List<String> images = (List<String>) dataSnapshot.getValue();
+//
+//                images.set(Glob.gCurPhotoIndex, imagePath);
+//
+//
+//                databaseCart.setValue(images);
+//            }
+//
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//            }
+//        });
 
     }
 
